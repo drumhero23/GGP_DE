@@ -334,7 +334,15 @@ euro80k (6) "60.000 bis 79.999 €",
 euro100k (7) "80.000 bis 99.999 €",
 euromore (8) "100.000 € oder mehr")
 
-Tpaymentrange = (euro449 (1) "499 € oder weniger", euro500 (2) "500 bis 999 €", euro1000 (3) "1,000 bis 1,499 €", euro1500 (4) "1,500 bis 1,999 €", euro2000 (5) "2,000 bis 2,499 €", euro2500 (6) "2,500 bis 2,999 €", euro3000 (7) "3,000 bis 4,999 €", euro5000 (8) "5,000 €  oder mehr")
+Tpaymentrange = 
+(euro449 (1) "499 € oder weniger", 
+euro500 (2) "500 bis 999 €", 
+euro1000 (3) "1.000 bis 1.499 €", 
+euro1500 (4) "1.500 bis 1.999 €", 
+euro2000 (5) "2.000 bis 2.499 €", 
+euro2500 (6) "2.500 bis 2.999 €", 
+euro3000 (7) "3.000 bis 4.999 €", 
+euro5000 (8) "5.000 € oder mehr")
 
 Tmovereason = 
 (housing (1) "Bessere Wohnverhältnisse",
@@ -344,7 +352,8 @@ financial (4) "Finanzielle Gründe",
 work (5) "Arbeitsbedingte Gründe",
 education (6) "Ausbildung beziehungsweise Studium",
 health (7) "Gesundheitliche Gründe",
-coresidence (8) "Sonstiges" other (9) "Other")
+coresidence (8) "???", 
+other (9) "Sonstiges")
 
 BLOCK DEMOGRAPHICS
 
@@ -375,11 +384,15 @@ DEM05 "Wann sind Sie zum ersten Mal nach Deutschland gezogen? [MM/JJJJ]<br />
 <i>Bitte geben Sie den ungefähren Zeitpunkt an, wenn Sie sich unsicher sind.</i>"
 /"Date of Immigration": Tdate, DONTKNOW, RF
 
+DEM05a "Haben Sie die deutsche Staatsbürgerschaft?" / "Citizenship" : Tyesno, RF
+ 
+DEM05b "Haben Sie mehrere Staatsbürgerschaften?" / "Multiple citizenship" : Tyesno, DK, RF}
+
 DEM06 "Was beschreibt am ehesten Ihre derzeitige Situation?"
 /"Activity Status": Tempstat, RF
 
 //Education
-DEM07a " Welchen höchsten allgemeinbildenden Schulabschluss haben Sie?"
+DEM07a "Welchen höchsten allgemeinbildenden Schulabschluss haben Sie?"
 /"School Leaving Certificate (Germany)"
 Help "Bitte wählen Sie das Bildungsniveau, das Ihrem höchsten erreichten Bildungsniveau am nächsten kommt."
 : Tgermed1, DK, RF
@@ -477,11 +490,11 @@ DEM24a "Ist Ihr Partner oder Ihre Partnerin in <i><i><i><i>^{acountry}</i></i></
 DEM24b "In welchem Land ist er oder sie geboren?"
 /"Country of Birth of Partner": STRING, DONTKNOW, REFUSAL
 
-DEM24bISO "In which country was he/she born?" / "Country of Birth of Partner (ISO CODE)": STRING[4], RF
+DEM24bISO "In welchem Land ist er oder sie geboren?" / "Country of Birth of Partner (ISO CODE)": STRING[4], RF
 
-DEM24c "Is your partner a citizen of ^{acountry}?" / "Citizenship of Partner": Tyesno, RF
+DEM24c "Hat Ihr Partner oder Ihre Partnerin die deutsche Staatbürgerschaft?" / "Citizenship of Partner": Tyesno, RF
 
-DEM24d "Does your partner have citizenship of more than one country?" / "Multiple citizenship of Partner": Tyesno, DK
+DEM24d "Hat Ihr Partner oder Ihre Partnerin mehr als eine Staatbürgerschaft?" / "Multiple citizenship of Partner": Tyesno, DK
 
 DEM24e "Wann ist er oder sie zum ersten Mal nach Deutschland gezogen? [MM/JJJJ]<br />
 <i>Bitte geben Sie den ungefähren Zeitpunkt an, wenn Sie sich unsicher sind.</i>"
@@ -647,7 +660,7 @@ IF DEM03 = no THEN
    DEM05
 ENDIF
 
-{DEM05a DEM05b} DEM06 DEM07a
+DEM05a DEM05b DEM06 DEM07a
 IF (DEM07a = 1403) OR (DEM07a = 1404) OR (DEM07a = 1405) OR (DEM07a = 1406) OR (DEM07a = 1407) OR (DEM07a = 1408) OR (DEM07a = 1409) THEN
     DEM08a_m DEM08a_y
 ENDIF 
