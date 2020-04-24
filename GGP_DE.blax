@@ -316,7 +316,7 @@ daughterso (16) "Partner oder Partnerin der Tochter",
 sonso (17) "Partner oder Partnerin des Sohnes",
 otherrelative (18) "andere Verwandte",
 acq (19) "Freunde, Bekannte, Nachbarn, Kollegen",
-otherp (20) "andere Person"
+otherp (20) "andere Person",
 noone (21) "Niemand")
 
 Trelationship4 =
@@ -384,7 +384,7 @@ lang2 (2) "Türkisch",
 lang3 (3) "Polnisch",
 lang4 (4) "Arabisch",
 lang5 (5) "Englisch",
-lang6 (6) "Serbokroatisch"
+lang6 (6) "Serbokroatisch",
 other (7) "Andere")
 
 
@@ -404,7 +404,7 @@ euro500k (7) "250.000 bis 499.999 €",
 euromore (8) "500.000 € oder mehr")
 
 Twealthrange2 =
-(no (0) "Ich habe keinen Immobilienbesitz"
+(no (0) "Ich habe keinen Immobilienbesitz",
 euro5k (1) "4.999 € oder weniger",
 euro10k (2) "5.000 bis 9.999 €",
 euro20k (3) "10.000 bis 19.999 €",
@@ -417,8 +417,8 @@ euro399k (9) "350.000 bis 399.999 €",
 euro449k (10) "400.000 bis 449.999 €",
 euro499k (11) "450.000 bis 499.999 €",
 euro599k (12) "500.000 bis 599.999 €",
-euro799k (13) "600.000 € bis 799.999 €"
-euro999k (14) "800.000 € bis 999.999 €"
+euro799k (13) "600.000 € bis 799.999 €",
+euro999k (14) "800.000 € bis 999.999 €",
 euromore (15) "1 Millionen € oder mehr")
 
 Tincomerange =
@@ -558,7 +558,7 @@ INC02a2 "Wie viel bezahlt Ihr Haushalt derzeit monatlich für Nebenkosten, also 
 
 DEM12 "Wie zufrieden sind Sie mit Ihrer Wohnung oder Ihrem Haus?<br />
 <br />
-<i>Auf einer Skala von 0 bis 10, welche Zahl würde Ihre Zufriedenheit am besten wiedergeben? 0 steht dabei für \"überhaupt nicht zufrieden\" und 10 für \"vollkommen zufrieden\". 5 steht für eine \"durchschnittliche Zufriedenheit\".</i>"
+<i>Auf einer Skala von 0 bis 10, welche Zahl würde Ihre Zufriedenheit am besten wiedergeben? 0 steht dabei für <i>überhaupt nicht zufrieden</i> und 10 für <i>vollkommen zufrieden</i>. 5 steht für eine <i>durchschnittliche Zufriedenheit</i>."
 /"Housing Satisfaction": 0..10, RF
 
 DEM13 "In welcher Art von Haus oder Wohnung leben Sie?"
@@ -751,7 +751,7 @@ DEM36u "mal pro..." / "Time unit of meetings with non-resident partner": Ttimeun
 //Partnership Quality
 
 DEM37 "Wie zufrieden sind Sie mit der Beziehung zu Ihrem Partner oder zu Ihrer Partnerin?<br />
-<i>Auf einer Skala von 0 bis 10, welche Zahl würde Ihre Zufriedenheit am besten wiedergeben? 0 steht dabei für \"überhaupt nicht zufrieden\" und 10 für \"vollkommen zufrieden\". 5 steht für eine \"durchschnittliche Zufriedenheit\".</i>"
+<i>Auf einer Skala von 0 bis 10, welche Zahl würde Ihre Zufriedenheit am besten wiedergeben? 0 steht dabei für <i>überhaupt nicht zufrieden</i> und 10 für <i>vollkommen zufrieden</i>. 5 steht für eine <i>durchschnittliche Zufriedenheit</i>."
 /"Relationship Satisfaction": 0..10, REFUSAL
 
 DEM38a "...Hausarbeit?"
@@ -1281,7 +1281,7 @@ Bitte geben Sie die Antwort in Stunden und Minuten an. [HH:MM]"
 /"How long it takes to get to child":  ARRAY[1..20] OF Ttimedur, DONTKNOW, REFUSAL, NA
 
 LHI41_ "Wie zufrieden sind Sie mit Ihrer Beziehung zu <b>^{LHI24_[I]}</b>? <br />
-<i>Auf einer Skala von 0 bis 10, welche Zahl würde Ihre Zufriedenheit am besten wiedergeben? 0 steht dabei für \"überhaupt nicht zufrieden\" und 10 für \"vollkommen zufrieden\". 5 steht für eine \"durchschnittliche Zufriedenheit\". </i>"
+<i>Auf einer Skala von 0 bis 10, welche Zahl würde Ihre Zufriedenheit am besten wiedergeben? 0 steht dabei für <i>überhaupt nicht zufrieden</i> und 10 für <i>vollkommen zufrieden</i>. 5 steht für eine <i>durchschnittliche Zufriedenheit</i>. "
 /"Relationship satisfaction with child": ARRAY[1..20] OF 0..10, DONTKNOW, REFUSAL
 
 //INTENSIONS OF UNION FORMATION 
@@ -2720,7 +2720,7 @@ FER11_ "Haben Sie folgende Maßnahmen ergriffen, um schwanger zu werden? Bitte n
 FER12_ "Haben Sie irgendwelche Maßnahmen ergriffen, um eine Schwangerschaft zu verhüten? Bitte nennen Sie alle Maßnahmen, die ergriffen wurden."
 /"Contraception": 
 	SET OF 
-	(nouse (0) "Keine Verhütung"
+	(nouse (0) "Keine Verhütung",
 	Condom (1) "Kondom", 
 	Pills (2) "Pille, Mini-Pille", 
 	Intrauterine (3) "Spirale oder Kupfer-T (Intrauterine Methode)", 
@@ -2763,7 +2763,7 @@ FER21 "Wie alt waren Sie, als Ihre erste Menstruation einsetzte?"
 FER22 "Wie alt waren Sie, als Sie in den Stimmbruch kamen?"
 /"Age of voice breaking": 0..50, DK, RF, NA
 
-FER23 "Wie alt waren Sie, als Sie zum ersten Mal Geschlechtsverkehr hatten? Wenn Sie keinen Geschlechtsverkehr hatten, wählen Sie bitte die Kategorie 'trifft nicht zu'."
+FER23 "Wie alt waren Sie, als Sie zum ersten Mal Geschlechtsverkehr hatten? Wenn Sie keinen Geschlechtsverkehr hatten, wählen Sie bitte die Kategorie <i>trifft nicht zu</i>."
 /"Age of first intercourse": 0..50, DK, RF, NA
 
 AUXFIELDS
@@ -2923,7 +2923,7 @@ HHD07_ "Was beschreibt am ehesten die derzeitige Situation von <b>^{HHD02_[I]}?<
 /"Activity of HH Member": ARRAY [1..20] OF Tactstat, DK, RF
 
 HHD08_ "Wie zufrieden sind Sie mit der Beziehung zu <b>^{HHD02_[I]}</b>?<br />
-<i>Auf einer Skala von 0 bis 10, welche Zahl würde Ihre Zufriedenheit am besten wiedergeben? 0 steht dabei für \"überhaupt nicht zufrieden\" und 10 für \"vollkommen zufrieden\". 5 steht für eine \"durchschnittliche Zufriedenheit\".</i>"
+<i>Auf einer Skala von 0 bis 10, welche Zahl würde Ihre Zufriedenheit am besten wiedergeben? 0 steht dabei für <i>überhaupt nicht zufrieden</i> und 10 für <i>vollkommen zufrieden</i>. 5 steht für eine <i>durchschnittliche Zufriedenheit</i>."
 /"Relationship to R of HH Member": ARRAY [1..20] OF 0..10, DK, RF
 
 HHD09_ "Wenn Sie an die letzten sechs Monate zurückdenken, inwieweit war <b>^{HHD02_[I]}</b> aufgrund eines gesundheitlichen Problems in der Fähigkeit eingeschränkt, normale Alltagsaktivitäten auszuführen? Würden Sie sagen, er oder sie war... "
@@ -2954,7 +2954,7 @@ HHD11f "Gemeinsame soziale Aktivitäten organisieren"
 /"Household Tasks: social": Ttasks, DK, RF
 
 HHD12 "Wie zufrieden sind Sie mit der Aufgabenteilung Ihres Haushalts zwischen Ihnen und Ihrem Partner oder Ihrer Partnerin?<br />
-<i>Auf einer Skala von 0 bis 10, welche Zahl würde Ihre Zufriedenheit mit der Aufgabenteilung Ihres Haushalts am besten wiedergeben? 0 steht dabei für \"überhaupt nicht zufrieden\" und 10 für \"vollkommen zufrieden\". 5 steht für eine \"durchschnittliche Zufriedenheit\"</i>"
+<i>Auf einer Skala von 0 bis 10, welche Zahl würde Ihre Zufriedenheit mit der Aufgabenteilung Ihres Haushalts am besten wiedergeben? 0 steht dabei für <i>überhaupt nicht zufrieden</i> und 10 für <i>vollkommen zufrieden</i>. 5 steht für eine <i>durchschnittliche Zufriedenheit</i>."
 /"Household Tasks Satisfaction": 0..10, DK, RF
 
 HHD12a "Wenn Sie einmal alles zusammennehmen, also Hausarbeit und Berufstätigkeit: Wie gerecht empfinden Sie die Arbeitsteilung zwischen Ihnen und Ihrem Partner oder Ihrer Partnerin insgesamt?"
@@ -2981,7 +2981,7 @@ HHD13e "Die Kinder ins Bett bringen"
 /"Childcare Tasks: putting children to bed": Tcctasks, NA, DK, RF
 
 HHD14 "Wie zufrieden sind Sie mit der Aufgabenteilung der Kinderbetreuung zwischen Ihnen und Ihrem Partner oder Ihrer Partnerin?<br />
-<i>Auf einer Skala von 0 bis 10, welche Zahl würde Ihre Zufriedenheit mit der Aufgabenteilung der Kinderbetreuung am besten wiedergeben? 0 steht dabei für \"überhaupt nicht zufrieden\" und 10 für \"vollkommen zufrieden\". 5 steht für eine \"durchschnittliche Zufriedenheit\."</i><br /> "
+<i>Auf einer Skala von 0 bis 10, welche Zahl würde Ihre Zufriedenheit mit der Aufgabenteilung der Kinderbetreuung am besten wiedergeben? 0 steht dabei für <i>überhaupt nicht zufrieden</i> und 10 für <i>vollkommen zufrieden</i>. 5 steht für eine <i>durchschnittliche Zufriedenheit</i>."
 /"Childcare Tasks Satisfaction": 0..10, DK, RF
 
 HHD14a "Bitte denken Sie jetzt an Ihr jüngstes Kind:<br /> 
@@ -3059,69 +3059,69 @@ HHD23_ "Bitte nennen Sie alle Alternativen, die Sie regelmäßig nutzen."
 	Other (9) "Andere Form der bezahlten Kinderbetreuung"), DK, RF, EMPTY
 
 HHD23a "Wie oft nutzen Sie für die Kinderbetreuung eine Krippe oder Kindertagesstätte ("Kita") für Kinder unter drei Jahren?<br />
-<i>Bitte geben Sie die Häufigkeit pro Woche, Monat oder Jahr an.</i>" 
+<i>Bitte geben Sie die Häufigkeit pro Woche, Monat oder Jahr an.</i>"
 / "Childcare Frequency: Daycare": 0..365, DK, RF
 
 HHD23b "Wie oft nutzen Sie für die Kinderbetreuung einen Kindergarten oder Kindertagesstätte (Kita) für Kinder ab drei Jahren?<br />
-<i>Bitte geben Sie die Häufigkeit pro Woche, Monat oder Jahr an.</i>" 
+<i>Bitte geben Sie die Häufigkeit pro Woche, Monat oder Jahr an.</i>"
 / "Childcare Frequency: Nursery": 0..365, DK, RF
 
 HHD23c "Wie oft nutzen Sie für die Kinderbetreuung eine Vorschule?<br />
-<i>Bitte geben Sie die Häufigkeit pro Woche, Monat oder Jahr an.</i>" 
+<i>Bitte geben Sie die Häufigkeit pro Woche, Monat oder Jahr an.</i>"
 / "Childcare Frequency: Vorschule": 0..365, DK, RF
 
 HHD23d "Wie oft nutzen Sie für die Kinderbetreuung nach der Schule (Kinderhort)?<br />
-<i>Bitte geben Sie die Häufigkeit pro Woche, Monat oder Jahr an.</i>" 
+<i>Bitte geben Sie die Häufigkeit pro Woche, Monat oder Jahr an.</i>"
 / "Childcare Frequency: After school care centre": 0..365, DK, RF
 
 HHD23e "Wie oft nutzen Sie für die Kinderbetreuung eine selbstorganisierte Betreuungsgruppe?<br />
-<i>Bitte geben Sie die Häufigkeit pro Woche, Monat oder Jahr an.</i>" 
+<i>Bitte geben Sie die Häufigkeit pro Woche, Monat oder Jahr an.</i>"
 / "Childcare Frequency: Self organised childcare group": 0..365, DK, RF
 
 HHD23f "Wie oft nutzen Sie für die Kinderbetreuung eine Tagesmutter oder einen Tagesvater?<br />
-<i>Bitte geben Sie die Häufigkeit pro Woche, Monat oder Jahr an.</i>" 
+<i>Bitte geben Sie die Häufigkeit pro Woche, Monat oder Jahr an.</i>"
 / "Childcare Frequency: Tagesmutter": 0..365, DK, RF
 
 HHD23g "Wie oft nutzen Sie für die Kinderbetreuung eine Babysitterin oder Babysitter?<br />
-<i>Bitte geben Sie die Häufigkeit pro Woche, Monat oder Jahr an.</i>" 
+<i>Bitte geben Sie die Häufigkeit pro Woche, Monat oder Jahr an.</i>"
 / "Childcare Frequency: Babysitter": 0..365, DK, RF
 
 HHD23h "Wie oft nutzen Sie für die Kinderbetreuung ein Kindermädchen, Au pair oder eine andere bezahlte Person, die im Haushalt wohnt?<br />
-<i>Bitte geben Sie die Häufigkeit pro Woche, Monat oder Jahr an.</i>" 
+<i>Bitte geben Sie die Häufigkeit pro Woche, Monat oder Jahr an.</i>"
 / "Childcare Frequency: Aupair": 0..365, DK, RF
 
 HHD23i "Wie oft nutzen Sie für die Kinderbetreuung eine Andere Form der bezahlten Kinderbetreuung?<br />
-<i>Bitte geben Sie die Häufigkeit pro Woche, Monat oder Jahr an.</i>" 
+<i>Bitte geben Sie die Häufigkeit pro Woche, Monat oder Jahr an.</i>"
 / "Childcare Frequency: Other": 0..365, DK, RF
 
-HHD23au "mal pro..." 
+HHD23au "mal pro..."
 / "Childcare Frequency [UNIT]: Daycare": Ttimeunit, DK, RF
 
-HHD23bu "mal pro..." 
+HHD23bu "mal pro..."
 / "Childcare Frequency [UNIT]: Nursery": Ttimeunit, DK, RF
 
-HHD23cu "mal pro..." 
+HHD23cu "mal pro..."
 / "Childcare Frequency [UNIT]: Vorschule": Ttimeunit, DK, RF
 
-HHD23du "mal pro..." 
+HHD23du "mal pro..."
 / "Childcare Frequency [UNIT]: After school care centre": Ttimeunit, DK, RF
 
-HHD23eu "mal pro..." 
+HHD23eu "mal pro..."
 / "Childcare Frequency [UNIT]: Self-organised childcare group": Ttimeunit, DK, RF
 
-HHD23fu "mal pro..." 
+HHD23fu "mal pro..."
 / "Childcare Frequency [UNIT]: Tagesmutter": Ttimeunit, DK, RF
 
-HHD23gu "mal pro..." 
+HHD23gu "mal pro..."
 / "Childcare Frequency [UNIT]: Babysitter": Ttimeunit, DK, RF
 
-HHD23hu "mal pro..." 
+HHD23hu "mal pro..."
 / "Childcare Frequency [UNIT]: Aupair": Ttimeunit, DK, RF
 
-HHD23iu "mal pro..." 
+HHD23iu "mal pro..."
 / "Childcare Frequency [UNIT]: Other": Ttimeunit, DK, RF
 
-HHD24 "Wieviel zahlt Ihr Haushalt normalerweise für Kinderbetreuung? Falls Ihr Haushalt nichts für Kinderbetreuung bezahlt, tragen Sie bitte eine \"0\" ein. <br />
+HHD24 "Wieviel zahlt Ihr Haushalt normalerweise für Kinderbetreuung? Falls Ihr Haushalt nichts für Kinderbetreuung bezahlt, tragen Sie bitte eine 0 ein. <br />
 <i>Bitte geben Sie dien Häufigkeit pro Woche, Monat oder Jahr an.</i>"
 /"Cost of Childcare": 0..9999999, DK, RF
 
@@ -3159,14 +3159,14 @@ HHD30u "mal pro ..."
 HHD31 "Wurde eine dieser Personen für ihre Hilfe bezahlt?"
 /"Regular help with household tasks: Paid": Tyesno, DK, RF
 
-HHD32 "Erhalten Sie regelmäßig Unterstützung bei Tätigkeiten im Haushalt durch Mitarbeiterinnen und Mitarbeiter öffentlicher oder privater Einrichtungen (z.B. Putzhilfe, häusliche Pflegedienste, 'Essen auf Rädern')?" / "Regular help with housework (from whom housework is a job)": 
+HHD32 "Erhalten Sie regelmäßig Unterstützung bei Tätigkeiten im Haushalt durch Mitarbeiterinnen und Mitarbeiter öffentlicher oder privater Einrichtungen (z.B. Putzhilfe, häusliche Pflegedienste, <i>Essen auf Rädern</i>)?" / "Regular help with housework (from whom housework is a job)": 
 	(yespublic (1) "Ja, von einer öffentlichen Einrichtung", 
 	yesprivate (2) "Ja, von einer privaten Einrichtung", 
 	yesunknown (3) "Ja, ich bin aber nicht sicher ob öffentlich oder privat", 
 	no (4) "Nein"), DK, RF
 
 HHD33 "Wie oft nehmen Sie diese Unterstützung in Anspruch? <br />
-<i>Bitte geben Sie die Häufigkeit pro Woche, Monat oder Jahr an.</i>" 
+<i>Bitte geben Sie die Häufigkeit pro Woche, Monat oder Jahr an.</i>"
 / "Regular help with housework (from whom housework is a job): frequency": 0..365, DK, RF
 
 HHD33u "Mal pro..." / "Regular help with housework (from whom housework is a job): frequency [UNIT]": Ttimeunit, DK, RF
@@ -3184,25 +3184,25 @@ HHD36_ "Wem haben Sie geholfen? <br/>
 
 //Child Maintenance
 
-HHD37 "Haben Sie innerhalb der letzten 12 Monate für Ihr Kind oder Ihre Kinder Unterhaltszahlungen erhalten?" 
+HHD37 "Haben Sie innerhalb der letzten 12 Monate für Ihr Kind oder Ihre Kinder Unterhaltszahlungen erhalten?"
 / "Received maintenance payments for children": 
 	(yesregular (1) "Ja, regelmäßig", 
 	yessometimes (2) "Ja, von Zeit zu Zeit", 
 	no (3) "Nein"), DK, RF
 
-HHD38 "Haben Sie innerhalb der letzten 12 Monate für Ihr Kind oder Ihre Kinder Unterhaltszahlungen gezahlt?" 
+HHD38 "Haben Sie innerhalb der letzten 12 Monate für Ihr Kind oder Ihre Kinder Unterhaltszahlungen gezahlt?"
 / "Given maintenance payments for children": 
 	(yesregular (1) "Ja, regelmäßig", 
 	yessometimes (2) "Ja, von Zeit zu Zeit", 
 	no (3) "Nein"), DK, RF
 
-HHD39 "Haben Sie persönlich innerhalb der letzten 12 Monate von einem früheren Partner oder einer früheren Partnerin Unterhalt oder andere Zahlungen erhalten?" 
+HHD39 "Haben Sie persönlich innerhalb der letzten 12 Monate von einem früheren Partner oder einer früheren Partnerin Unterhalt oder andere Zahlungen erhalten?"
 / "Recieved Alimony from former partner": 
 	(yesregular (1) "Ja, regelmäßig", 
 	yessometimes (2) "Ja, von Zeit zu Zeit", 
 	no (3) "Nein"), DK, RF
 
-HHD40 "Haben Sie innerhalb der letzten 12 Monate einem früheren Partner oder einer früheren Partnerin Unterhalt oder andere Zahlungen gezahlt?" 
+HHD40 "Haben Sie innerhalb der letzten 12 Monate einem früheren Partner oder einer früheren Partnerin Unterhalt oder andere Zahlungen gezahlt?"
 / "Given Alimony to former partner": 
 	(yesregular (1) "Ja, regelmäßig", 
 	yessometimes (2) "Ja, von Zeit zu Zeit", 
@@ -3650,16 +3650,16 @@ GEN14 "Wann ist Ihre Mutter nach <i>^{acountry}</i> gezogen? <i>[MM/JJJJ]<br />
 /"Mothers first date of residence in [COUNTRY]": Tdate, DK, RF
 
 GEN15 "Wie oft haben Sie mit Ihrer Mutter Kontakt, sei es persönlich, per Telefon, Post, E-Mail oder auf anderem Weg?<br />
-<i>Bitte geben Sie dien Häufigkeit pro Woche, Monat oder Jahr an.</i>" 
+<i>Bitte geben Sie dien Häufigkeit pro Woche, Monat oder Jahr an.</i>"
 / "Freq of meeting with Mother": 0..365, DK, RF
 
 GEN15u "Mal pro..." / "Freq of meeting with Mother [UNIT]": Ttimeunit, DK, RF
 
 GEN16 "Wie zufrieden sind Sie mit der Beziehung zu Ihrer Mutter?<br />
-<i>Auf einer Skala von 0 bis 10, welche Zahl würde Ihre Zufriedenheit am besten wiedergeben? 0 steht dabei für \"überhaupt nicht zufrieden\" und 10 für \"vollkommen zufrieden\". 5 steht für eine \"durchschnittliche Zufriedenheit\".</i>"
+<i>Auf einer Skala von 0 bis 10, welche Zahl würde Ihre Zufriedenheit am besten wiedergeben? 0 steht dabei für <i>überhaupt nicht zufrieden</i> und 10 für <i>vollkommen zufrieden</i>. 5 steht für eine <i>durchschnittliche Zufriedenheit</i>."
 /"Satisfaction with the relationship with Mother": 0..10, DK, RF
 
-GEN16a "Wie eng fühlen Sie sich mit Ihrer leiblichen Mutter heute verbunden?" 
+GEN16a "Wie eng fühlen Sie sich mit Ihrer leiblichen Mutter heute verbunden?"
 /"Connected mother": 
 	(notatall (1) "Überhaupt nicht eng",
 	two (2) "2",
@@ -3722,16 +3722,16 @@ GEN28 "Wann ist Ihr Vater nach <i> ^{acountry} </i> gezogen? [MM/JJJJ]<br />
 /"Fathers first date of residence in [COUNTRY]": Tdate, DK, RF
 
 GEN29 "Wie oft haben Sie mit Ihrem Vater Kontakt, sei es persönlich, per Telefon, Post, E-Mail oder auf anderem Weg?<br />
-<i>Bitte geben Sie dien Häufigkeit pro Woche, Monat oder Jahr an.</i>" 
+<i>Bitte geben Sie dien Häufigkeit pro Woche, Monat oder Jahr an.</i>"
 /"Freq of meeting with Father": 0..365, DK, RF
 
 GEN29u "Mal pro..." / "Time Unit Freq of Meeting wih Father [UNIT]": Ttimeunit, DK, RF
 
 GEN30 "Wie zufrieden sind Sie mit der Beziehung zu Ihrem Vater?<br />
-<i>Auf einer Skala von 0 bis 10, welche Zahl würde Ihre Zufriedenheit am besten wiedergeben? 0 steht dabei für \"überhaupt nicht zufrieden\" und 10 für \"vollkommen zufrieden\". 5 steht für eine \"durchschnittliche Zufriedenheit\".</i>"
+<i>Auf einer Skala von 0 bis 10, welche Zahl würde Ihre Zufriedenheit am besten wiedergeben? 0 steht dabei für <i>überhaupt nicht zufrieden</i> und 10 für <i>vollkommen zufrieden</i>. 5 steht für eine <i>durchschnittliche Zufriedenheit.</i>"
 /"Satisfaction with the relationship with Father": 0..10, DK, RF
 
-GEN30a "Wie eng fühlen Sie sich mit Ihrem leiblichen Vater heute verbunden?" 
+GEN30a "Wie eng fühlen Sie sich mit Ihrem leiblichen Vater heute verbunden?"
 /"Connected father": 
 	(notatall (1) "Überhaupt nicht eng",
 	two (2) "2",
@@ -4313,7 +4313,7 @@ FIELDS
 
 WEL01 "Alles in allem, wie zufrieden sind Sie gegenwärtig mit Ihrem Leben?<br />
 <br />
-<i>Auf einer Skala von 0 bis 10, welche Zahl würde Ihre Zufriedenheit am besten wiedergeben? 0 steht dabei für \"überhaupt nicht zufrieden\" und 10 für \"vollkommen zufrieden\". 5 steht für eine \"durchschnittliche Zufriedenheit\".</i>"
+<i>Auf einer Skala von 0 bis 10, welche Zahl würde Ihre Zufriedenheit am besten wiedergeben? 0 steht dabei für <i>überhaupt nicht zufrieden</i> und 10 für <i>vollkommen zufrieden</i>. 5 steht für eine <i>durchschnittliche Zufriedenheit.</i>"
 /"Life Satisfaction": 0..10, DONTKNOW, REFUSAL
 
 WEL02 "Wie würden Sie Ihren allgemeinen Gesundheitszustand beschreiben?"
@@ -4365,7 +4365,7 @@ WEL06 "Wie viel wiegen Sie momentan ungefähr (in Kilogramm)? <br/>
 WEL07 "Wie groß sind Sie ungefähr (in Zentimetern)?"
 /"Height (cm)": 50..300, DONTKNOW, REFUSAL
 
-WEL08 "Alles in allem, wie glücklich sind Sie? 0 steht dabei für \'äußerst unglücklich\' und 10 für \'überaus glücklich\'."
+WEL08 "Alles in allem, wie glücklich sind Sie? 0 steht dabei für <i>äußerst unglücklich</i> und 10 für <i>überaus glücklich</i>."
 /"Happiness Scale": 0..10, DONTKNOW, REFUSAL
 
 WEL09a "Es gibt genug Menschen, auf die ich mich bei Problemen stützen kann."
@@ -4390,7 +4390,7 @@ WEL10_ "Wer sind die Personen, mit denen Sie normalerweise wichtige persönliche
 /"Discuss Important Matters": SET OF Trelationship3, EMPTY
 
 WEL11a "Ich konnte mich nicht einmal mit Hilfe meiner Familie oder meiner Freunde aus meiner Schwermut befreien."
-/"Depression: Couldn\'t shake off the blues":  Tfreq3, DONTKNOW, REFUSAL
+/"Depression: Could not shake off the blues":  Tfreq3, DONTKNOW, REFUSAL
 
 WEL11b "Ich war deprimiert."
 /"Depression: Felt Depressed":  Tfreq3, DONTKNOW, REFUSAL
@@ -4454,7 +4454,7 @@ OccFile: Occupations
 FIELDS
 
 WRK01 "Zu Beginn der Befragung haben Sie angegeben, dass Sie <B>^{BDEMOGRAPHICS.DEM06}</B> sind. Wie zufrieden sind Sie damit?<br />
-<i>Auf einer Skala von 0 bis 10, welche Zahl würde Ihre Zufriedenheit am besten wiedergeben? 0 steht dabei für \"überhaupt nicht zufrieden\" und 10 für \"vollkommen zufrieden\". 5 steht für eine \"durchschnittliche Zufriedenheit\".</i>"
+<i>Auf einer Skala von 0 bis 10, welche Zahl würde Ihre Zufriedenheit am besten wiedergeben? 0 steht dabei für <i>überhaupt nicht zufrieden</i> und 10 für <i>vollkommen zufrieden</i>. 5 steht für eine <i>durchschnittliche Zufriedenheit.</i>"
 /"Satisfaction with Employment Status": 0..10, DONTKNOW, REFUSAL
 
 // Notiz an Infas: bitte die Standard-Variablen für die Erfassung der ISCO-Kodierung aufnehmen; dann kann auf WRK02 verzichtet bzw. integriert werden
@@ -4477,7 +4477,7 @@ WRK04ISCO "Was ist Ihre derzeitige Tätigkeit? Bitte nennen Sie die Haupttätigk
 WRK06 "In welchem Umfang sind Sie beschäftigt? Sind Sie ..."
 /"Full time or Part Time": 
 	(ft (1) "Vollzeit", 
-	pt (2) "Teilzeit"
+	pt (2) "Teilzeit",
 	mt (3) "Geringfügig beschäftigt, Mini-Job oder Ein-Euro-Job"), DONTKNOW, REFUSAL
 
 WRK07 "Wie viele Stunden arbeiten Sie normalerweise pro Woche, einschließlich Überstunden?<br/>
@@ -4499,9 +4499,9 @@ WRK08a "Es gibt ja sehr unterschiedliche Arbeitszeitregelungen. Welche der folge
 
 WRK09 "Noch einmal zum Thema Arbeitszeiten. Was trifft bei Ihnen an einem normalen Arbeitstag am ehesten zu?"
 /"Fixed start and finish times": 
-	(fixed (1) "Fester Beginn und festes Ende der täglichen Arbeitszeit"
-	partlyfixed (2) "Vom Betrieb festgelegte, teilweise wechselnde Arbeitszeiten pro Tag"
-	noformal (3) "Keine formelle Arbeitszeitregelung, lege Arbeitszeit selbst fest"
+	(fixed (1) "Fester Beginn und festes Ende der täglichen Arbeitszeit",
+	partlyfixed (2) "Vom Betrieb festgelegte, teilweise wechselnde Arbeitszeiten pro Tag",
+	noformal (3) "Keine formelle Arbeitszeitregelung, lege Arbeitszeit selbst fest",
 	flextime (4) "Gleitzeit mit Arbeitszeitkonto und einer gewissen Selbstbestimmung über die tägliche Arbeitszeit in diesem Rahmen"), DONTKNOW, REFUSAL
 
 WRK10 "Wie oft kommt es vor, dass Sie zu Hause arbeiten?<br/>
@@ -4509,9 +4509,9 @@ WRK10 "Wie oft kommt es vor, dass Sie zu Hause arbeiten?<br/>
 /"Work from home": 
 	(daily (1) "Täglich", 
 	several (2) "Mehrmals pro Woche", 
-	once (3) "Einmal pro Woche"
-	onetothree (4) "Ein bis drei Mal im Monat"
-	seldom (5) "Seltener"
+	once (3) "Einmal pro Woche",
+	onetothree (4) "Ein bis drei Mal im Monat",
+	seldom (5) "Seltener",
 	never (6) "Nie"), DONTKNOW, REFUSAL
 
 WRK11 "Kommt es regelmäßig vor, dass Sie für mindestens zwei Stunden am Abend oder in der Nacht zwischen 20 Uhr und 5 Uhr arbeiten?"
@@ -4595,8 +4595,8 @@ WRK23 "Wie viele Beschäftigte haben Sie, einschließlich bezahlter Familienange
 WRK24 "Haben Sie die Möglichkeit, Ihre Tätigkeit nach Ihrem Mutterschutz oder Ihrer Eltern- beziehungsweise Erziehungszeit wieder anzutreten?"
 /"Opportunity to resume work after leave": 
 	(yes (1) "Ja" , 
-	no (2) "Nein" , DONTKNOW, REFUSAL
-	// na (3) "Not applicable, didn't work prior to leave" ) IS NOT POSSIBLE IN DE IN THAT CONTEXT
+	no (2) "Nein") , DONTKNOW, REFUSAL
+	// na (3) "Not applicable, did not work prior to leave" ) IS NOT POSSIBLE IN DE IN THAT CONTEXT
 
 WRK25 "Haben Sie vor, Ihre Erwerbstätigkeit nach dem Ende dieser Auszeit wieder aufzunehmen?"
 /"Intention to work after leave": Tintention, DONTKNOW, REFUSAL
@@ -4670,9 +4670,9 @@ WRK37 "Wie oft kommt es vor, dass er oder sie zu Hause arbeitet? <br />
 /"Partner works from home": 
 	(daily (1) "Täglich", 
 	several (2) "Mehrmals pro Woche", 
-	once (3) "Einmal pro Woche"
-	onetothree (4) "Ein bis drei Mal im Monat"
-	seldom (5) "Seltener"
+	once (3) "Einmal pro Woche",
+	onetothree (4) "Ein bis drei Mal im Monat",
+	seldom (5) "Seltener",
 	never (6) "Nie"), DONTKNOW, REFUSAL
 
 WRK38 "Kommt es regelmäßig vor, dass er oder sie für mindestens zwei Stunden am Abend oder in der Nacht zwischen 20 Uhr und 5 Uhr arbeitet?"
@@ -5014,12 +5014,12 @@ INC08_ "Im Folgenden sind verschiedene Arten von Einkommen aufgelistet. Bitte ge
 	basic (4) "Grundsicherung im Alter und bei Erwerbsminderung", 
 	widows (5) "Witwen- beziehungsweise Witwerrente, Hinterbliebenenrente", 
 	disability (6) "Erwerbs- oder Berufsunfähigkeitsrente, Invaliditäts- oder Krankengeld", 
-	careinsurance (7) "Leistungen der Pflegeversicherung" 
+	careinsurance (7) "Leistungen der Pflegeversicherung", 
 	unemployment (8) "Arbeitslosengeld I", 
 	social (9) "Sozialhilfe oder Arbeitslosengeld II beziehungsweise Hartz 4", 
 	scholar (10) "Studienkredit, BAföG oder Stipendium", 
 	pleave (11) "Elterngeld", 
-	mutterschutz (12) "Lohnfortzahlung im Mutterschutz"
+	mutterschutz (12) "Lohnfortzahlung im Mutterschutz",
 	interest (13) "Zinsen, Ausschüttungen und Einkünfte aus anderen Kapitalanlagen", 
 	rent (14) "Pacht- oder Mieteinnahmen",
 	alimony (15) "Gesetzliche Unterhaltszahlungen von ehemaligem/r Partner/in (nicht für Kinder)",
@@ -5029,7 +5029,7 @@ INC08_ "Im Folgenden sind verschiedene Arten von Einkommen aufgelistet. Bitte ge
 	housing (19) "Wohngeld oder Lastenzuschuss",
 	other (20) "Andere Einnahmequellen"), DONTKNOW, REFUSAL, EMPTY
 
-INC09_ "Bitte geben Sie an, wie oft Ihr Haushalt folgendes Einkommen in den letzten 12 Monaten erhalten hat: <b><b><b>\'^{INC08_[I]}\'</b></b></b>"
+INC09_ "Bitte geben Sie an, wie oft Ihr Haushalt folgendes Einkommen in den letzten 12 Monaten erhalten hat: <b>^{INC08_[I]}</b>"
 /"Frequency of Payment Type of Income": ARRAY[1..11] OF  1..100, DONTKNOW, REFUSAL, EMPTY
 
 // INC10_ "What was the average net amount of this payment?" / "Amount of Payment Type of Income" help "For Earnings from paid work and Retirement Pensions: If you are working with an employer, please include also earnings from any overtime you normally did. Please provide the net amount, that is, the take home pay.": ARRAY[1..11] OF  0..10000000, DONTKNOW, REFUSAL, EMPTY
@@ -5251,7 +5251,7 @@ ATT09 "Wie oft nehmen Sie, wenn überhaupt, an religiösen Veranstaltungen teil 
 ATT09u "mal pro..."
 /"Religious Service Attendance [TIME UNIT]": Ttimeunit, DONTKNOW, REFUSAL
 
-ATT10 "Unabhängig davon, ob Sie einer bestimmten Religionsgemeinschaft angehören, wie religiös würden Sie sagen sind Sie? Bitte geben Sie Ihre Religiosität auf einer Skala von 0 bis 10 an, wobei 0 für \'Überhaupt nicht religiös\' und 10 für \'Sehr religiös\' steht."
+ATT10 "Unabhängig davon, ob Sie einer bestimmten Religionsgemeinschaft angehören, wie religiös würden Sie sagen sind Sie? Bitte geben Sie Ihre Religiosität auf einer Skala von 0 bis 10 an, wobei 0 für <i>Überhaupt nicht religiös</i> und 10 für <i>Sehr religiös</i> steht."
 /"Religiosity": 0..10, DONTKNOW, REFUSAL
 
 ATT11a "Stellen Sie sich eine Familie mit Mutter, Vater und einem zweijährigen Kind vor. Sollte die Mutter Vollzeit, Teilzeit oder gar nicht arbeiten?"
@@ -5348,12 +5348,12 @@ REP04 "Fragen, die beeinflusst wurden:"
 : STRING[300], DONTKNOW
 
 REP05 "Alles in allem, wie bereitwillig hat der/die Befragte die Fragen beantwortet?<br />
-<i>Bitte antworten Sie auf einer Skala von 0 bis 10, wobei 0 für \"Überhaupt nicht bereitwillig\" und 10 für \"Sehr bereitwillig\" steht.</i>"
+<i>Bitte antworten Sie auf einer Skala von 0 bis 10, wobei 0 für <i>Überhaupt nicht bereitwillig</i> und 10 für <i>Sehr bereitwillig</i> steht."
 /"Willingness to answer questions"
 : 0..10, EMPTY
 
 REP06 "Wie beurteilen Sie die Angaben des/der Befragten?<br />
-<i>Bitte antworten Sie auf einer Skala von 0 bis 10, wobei 0 für \"Sehr unglaubwürdig\" und 10 für \"Sehr glaubwürdig\" steht.</i>"
+<i>Bitte antworten Sie auf einer Skala von 0 bis 10, wobei 0 für <i>Sehr unglaubwürdig</i> und 10 für <i>Sehr glaubwürdig</i> steht."
 /"Quality of information"
 : 0..10
 
