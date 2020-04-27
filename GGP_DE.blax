@@ -37,7 +37,8 @@ Tyesnosome = (yesa (1) "Ja, immer", yesm (2) "Ja, meistens", yess (3) "Ja, manch
 
 Tgender =
 (male (1) "Männlich",
-female (2) "Weiblich")
+female (2) "Weiblich",
+divers (3) "Divers")
 
 Tmonth = 1..12
 Tyear = 1900..2030
@@ -89,15 +90,17 @@ appscience (1403) "Fachhochschule, University of Applied Sciences, Ingenieurschu
 university (1404) "Universität (wissenschaftliche Hochschule, auch: Kunsthochschule, Pädagogische Hochschule, Theologische Hochschule)")
 
 Tpartnermeet =
-(work_school (1) "Über Schule, Ausbildung, Beruf",
-hobby (2) "Hobby, Verein, Sport",
-bar (3) "Kneipe, Disko",
-friends (4) "Im Bekannten- oder Freundeskreis",
-relatives (5) "Durch Verwandte",
-personal_ad (6) "Durch eine Anzeige",
-internet (7) "Durch das Internet",
-vacation (8) "Urlaub",
-other (9) "Sonstiges")
+(school (1) "Über Schule, Ausbildung oder Studium",
+work (2) "Über den Beruf",
+hobby (3) "Über Hobby, Verein oder Sport",
+bar (4) "In einer Kneipe oder Disko",
+friends (5) "Im Bekannten- oder Freundeskreis",
+relatives (6) "Durch Verwandte",
+personal_ad (7) "Durch eine Anzeige",
+internet (8) "Durch eine Partnerbörse im Internet",
+socialmedia (9) "Durch soziale Netzwerke, Chatforen oder Ähnliches im Internet",
+vacation (10) "Urlaub",
+other (11) "Sonstiges")
 
 Tempstat =
 (inpaid (1) "Ja, bezahlte Tätigkeit",
