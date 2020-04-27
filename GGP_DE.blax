@@ -706,35 +706,35 @@ DEM31 "Seit wann sind Sie ein Paar? [MM/JJJJ]<br />
 
 DEM32a "Wohnen Sie getrennt, weil Sie das so wollen, oder weil es die Umstände nicht zulassen, zusammenzuziehen?"
 /"Reason for living apart (most important one)": 
-	(me "Ich will getrennt wohnen", 
-	both "Wir wollen beide getrennt wohnen",  
-	partner "Mein Partner oder meine Partnerin will getrennt wohnen", 
-	circumstance "Die Umstände zwingen uns dazu"), REFUSAL
+	(me (1) "Ich will getrennt wohnen", 
+	both (2) "Wir wollen beide getrennt wohnen",  
+	partner (3) "Mein Partner oder meine Partnerin will getrennt wohnen", 
+	circumstance (4) "Die Umstände zwingen uns dazu"), REFUSAL
 
 DEM32b "Warum wollen Sie persönlich getrennt wohnen? Nennen Sie bitte den wichtigsten Grund."
 /"Respondent reason for living apart (most important one)": 
-	(financial "Aus finanziellen Gründen", 
-	independence "Um meine Unabhängigkeit zu bewahren", 
-	children "Wegen der Kinder", 
-	notready "Ich bin noch nicht bereit zusammen zu ziehen", 
-	other "Andere Gründe"), REFUSAL
+	(financial (1) "Aus finanziellen Gründen", 
+	independence (2) "Um meine Unabhängigkeit zu bewahren", 
+	children (3) "Wegen der Kinder", 
+	notready (4) "Ich bin noch nicht bereit zusammen zu ziehen", 
+	other (5) "Andere Gründe"), REFUSAL
 
 DEM32c "Warum will Ihr Partner oder Ihre Partnerin getrennt wohnen? Nennen Sie bitte den wichtigsten Grund."
 /"Partner reason for living apart (most important one)":  
-	(financial "Aus finanziellen Gründen", 
-	independence "Um seine oder ihre Unabhängigkeit zu bewahren", 
-	children "Wegen der Kinder", 
-	notready "Er oder sie ist noch nicht bereit zusammen zu ziehen", 
-	other "Andere Gründe"), REFUSAL
+	(financial (1) "Aus finanziellen Gründen", 
+	independence (2) "Um seine oder ihre Unabhängigkeit zu bewahren", 
+	children (3) "Wegen der Kinder", 
+	notready (4) "Er oder sie ist noch nicht bereit zusammen zu ziehen", 
+	other (5) "Andere Gründe"), REFUSAL
 
 DEM32d "Welche Umstände sind das? Nennen Sie bitte hiervon den wichtigsten."
 /"Circumstances for living apart (most important one)": 
-	(work "Berufliche Umstände", 
-	financial "Finanzielle Umstände", 
-	housing "Wohnungsbedingte Umstände", 
-	legal "Rechtliche Umstände", 
-	family "Mein Partner oder meine Partnerin hat eine andere Familie", 
-	other "Andere Umstände"), REFUSAL
+	(work (1) "Berufliche Umstände", 
+	financial (2) "Finanzielle Umstände", 
+	housing (3) "Wohnungsbedingte Umstände", 
+	legal (4) "Rechtliche Umstände", 
+	family (5) "Mein Partner oder meine Partnerin hat eine andere Familie", 
+	other (6) "Andere Umstände"), REFUSAL
 
 DEM33 "Waren Sie jemals mit Ihrem Partner oder Ihrer Partnerin verheiratet?"
 /"Ever married to current partner": Tyesno, REFUSAL
