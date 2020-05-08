@@ -9,13 +9,16 @@ Countries
 
 SPECIALANSWERS = 
    
-   NA "Nicht zutreffend", 
+   NA "Nicht zutreffend",  
+   // =-3
    Dontknow "Weiß nicht", 
+   // =-2
    Refusal "Keine Angabe",
-   Menop "Trifft nicht zu, denn die Wechseljahre haben bereits eingesetzt (Menopause)",
-   Hist "Trifft nicht zu, denn die Gebärmutter wurde entfernt",
-   Bev "Vor der letzten Geburt",
-   Nev "Trifft nicht zu, denn es fand noch nie eine Regelblutung (Menstruation) statt",
+   // =-1
+   // Menop "Trifft nicht zu, denn die Wechseljahre haben bereits eingesetzt (Menopause)",
+   // Hist "Trifft nicht zu, denn die Gebärmutter wurde entfernt",
+   // Bev "Vor der letzten Geburt",
+   // Nev "Trifft nicht zu, denn es fand noch nie eine Regelblutung (Menstruation) statt",
    Home "Hausmann oder Hausfrau",
    Nocohab "Wir haben nie zusammen gewohnt"
 
@@ -26,6 +29,8 @@ ROLES = Watermark, Help, Template
    
 TYPE
 Trespid = STRING[9] "[[A-Z{2}]+[\d{7}]"
+
+// Bitte wenn möglich bei allen Datumsvariablen zwei Variablen erstellen Monat (mm), Jahr (yyyy); konnte von unserer Seite aufgrund der Verflechtung in den Code nicht ohne weiteres implemtiert werden; bitte bei Konvertierung auch hierauf achten 
 Tdate = STRING[7] "[0-1][0-9]+/+[1-2][0-9]{3}"
 
 Tyesno =
@@ -108,7 +113,7 @@ unemp (2) "Nein, keine bezahlte Tätigkeit aber arbeitssuchend",
 notemp (3) "Nein, keine bezahlte Tätigkeit und nicht arbeitssuchend")
 
 Tactstat =
-(student (1) "In Ausbildung, an der Universität, an der Fachhochschule oder in der Schule",
+(student (1) "In Ausbildung, an einer Universität, Fachhochschule oder Schule",
 employed (2) "Abhängig beschäftigt (angestellt)",
 selfemp (3) "Selbständig",
 fambuis (4) "Mithelfendes Familienmitglied in einem Unternehmen oder in der Landwirtschaft",
@@ -394,6 +399,7 @@ other (7) "Andere")
 Tcontinue =
 (cont (1) "Weiter")
 
+// Bitte wenn möglich bei allen Zeitfragen zwei Variablen erstellen Stunden (hh) und Minuten (mm); konnte von unserer Seite aufgrund der Verflechtung in den Code nicht ohne weiteres implemtiert werden; bitte bei Konvertierung auch hierauf achten 
 Ttimedur = STRING[5] "[0-9]{2}:[0-9]{2}"
 
 Twealthrange =
@@ -452,8 +458,7 @@ financial (4) "Finanzielle Gründe",
 work (5) "Arbeitsbedingte Gründe",
 education (6) "Ausbildung beziehungsweise Studium",
 health (7) "Gesundheitliche Gründe",
-coresidence (8) "???", 
-other (9) "Sonstiges")
+other (8) "Sonstiges")
 
 BLOCK DEMOGRAPHICS
 
@@ -468,6 +473,7 @@ DEM01 "Welches Geschlecht haben Sie?"
 
 DEM02 "Wann sind Sie geboren? [MM/JJJJ]"
 /"Date of Birth": Tdate, RF
+
 DEM03 "Sind Sie in Deutschland geboren?"
 /"Born in Country": Tyesno, RF
 
@@ -496,7 +502,7 @@ DEM05b3 "Welche weitere Staatbürgerschaften haben Sie?" / "Multiple citizenship
 
 DEM06 "Was beschreibt am ehesten Ihre derzeitige Situation? <br />
 <i>Was in dieser Liste trifft auf Sie zu?</i>"
-/"Activity Status": Tempstat, RF
+/"Activity Status": Tactstat, RF
 
 //Education
 DEM07a "Welchen höchsten allgemeinbildenden Schulabschluss haben Sie?"
@@ -511,7 +517,7 @@ DEM07b2 "An welcher Art Hochschule oder Einrichtung haben Sie diesen Abschluss (
 /"Type of academic institution (Germany)"
 : Tgermed3, DK, RF
 
-DEM08a_m "Wann haben Sie diesen Abschluss erreicht?<newline><newline>Monat"
+DEM08a_m "Wann haben Sie diesen Abschluss erreicht? <br /> <i>Bitte geben Sie den ungefähren Zeitpunkt an, wenn Sie sich unsicher sind.</i> <newline><newline>Monat"
 /"Date Education Reached [MONTH] (Germany)" WATERMARK "MM"
 : Tmonth, DK, RF
 
@@ -519,7 +525,7 @@ DEM08a_y "Jahr"/ "Date Education Reached [YEAR] (Germany)"
    Watermark "JJJJ" 
 : 1900..2021, DK, RF
 
-DEM08b_m "Wann haben Sie diesen Abschluss erreicht? <newline><newline>Monat"
+DEM08b_m "Wann haben Sie diesen Abschluss erreicht? <br /> <i>Bitte geben Sie den ungefähren Zeitpunkt an, wenn Sie sich unsicher sind.</i> <newline><newline>Monat"
 /"Date Vocational Education Reached [MONTH] (Germany)" WATERMARK "MM"
 : Tmonth, DK, RF
 
@@ -573,10 +579,10 @@ DEM14 "Haben Sie Internet zu Hause?"
 DEM15 "Wie viele Stunden nutzen Sie an einem gewöhnlichen Tag das Internet auf einem Computer, Tablet, Mobiltelefon oder einem anderen Gerät, sei es für den beruflichen oder privaten Gebrauch?"
 /"Internet Use": 
 	(none (0) "Gar nicht", 
-	oneorless (1) "1 Stunde oder weniger", 
-	onetotwo (2) "1 bis 2 Stunden", 
-	twotofour (3) "2 bis 4 Stunden", 
-	more4 (4) "Mehr als 4 Stunden"), DK, RF, NA
+	oneorless (1) "Eine Stunde oder weniger", 
+	onetotwo (2) "Über eine Stunde bis zwei Stunden", 
+	twotofour (3) "Über zwei bis vier Stunden", 
+	more4 (4) "Mehr als vier Stunden"), DK, RF, NA
 
 // Notiz an infas: Bitte eine vollständige Sprachenliste wenn möglich verwenden
 DEM16 "Welche Sprache wird bei Ihnen zuhause überwiegend gesprochen?"
@@ -672,10 +678,13 @@ DEM25b2 "An welcher Art Hochschule oder Einrichtung hat Ihr Partner oder Ihre Pa
 //DEM25 "What is the highest level of education your partner has successfully completed?" /"Education Level of Partner": Tisced, DONTKNOW, REFUSAL
 
 DEM26 "Was beschreibt am ehesten die derzeitige Situation von Ihrem Partner oder Ihrer Partnerin?"
-/"Employment Status of Partner": Tempstat, DONTKNOW, REFUSAL
+/"Employment Status of Partner": Tactstat, DONTKNOW, REFUSAL
 
 DEM27 "Wenn Sie an die letzten sechs Monate zurückdenken, inwieweit war Ihr Partner oder Ihre Partnerin aufgrund eines gesundheitlichen Problems in der Fähigkeit eingeschränkt, normale Alltagsaktivitäten auszuführen? Würden Sie sagen, er oder sie war..."
-/"Everyday Activities Limitation of Partner":  Tyesno, REFUSAL
+/"Everyday Activities Limitation of Partner":  
+	(severely (1) "Stark eingeschränkt",
+	notseverely (2) "Leicht eingeschränkt",
+	notlimited (3) "Nicht eingeschränkt"), DONTKNOW, REFUSAL
 
 DEM28a "Sind Sie mit Ihrem derzeitigen Partner oder Ihrer Partnerin verheiratet?"
 /"Respondent is Married to Partner": Tyesno, RF
@@ -747,7 +756,8 @@ DEM35 "Wie lange dauert es, um von Ihrem Zuhause zu dem derzeitigen Wohnort Ihre
 <i>Bitte geben Sie Ihre Antwort in Stunden und Minuten an. [HH:MM]</i>"
 /"Time to Current Partner Residence [MINUTES]": Ttimedur, DONTKNOW, REFUSAL
 
-DEM36 "Wie oft haben Sie mit Ihrem Partner oder Ihrer Partnerin Kontakt, sei es persönlich, per Telefon, Post, E-Mail oder auf anderem Weg?" / "Number of meetings with non-resident partner": 0..365, REFUSAL
+DEM36 "Wie oft haben Sie mit Ihrem Partner oder Ihrer Partnerin Kontakt, sei es persönlich, per Telefon, Post, E-Mail oder auf anderem Weg? <br />
+<i>Bitte geben Sie die Häufigkeit pro Woche, Monat oder Jahr an.</i>" / "Number of meetings with non-resident partner": 0..365, REFUSAL
 
 DEM36u "mal pro..." / "Time unit of meetings with non-resident partner": Ttimeunit, REFUSAL
 
@@ -816,7 +826,7 @@ DEM46 "Wie viele eigene Kinder hat oder hatte Ihr Partner oder Ihre Partnerin, v
 
 AUXFIELDS
 
-DEMINT "<b>Abschnitt 1 von 9: Über Sie als Person...</b><br />
+DEMINT "<b>Abschnitt 1 von 9: Über Sie als Person</b><br />
 Zu Beginn einige Fragen über Sie persönlich."
 /"Demographics Intro": Tcontinue, EMPTY
 
@@ -1115,7 +1125,7 @@ LHI04a_ "Wie haben Sie und <b>^{LHI03_[I]}</b> sich kennengelernt?"
 
 LHI04_ "Wann sind Sie mit <b>^{LHI03_[I]}</b> <b> </b> zusammengezogen? [MM/JJJJ]<br />
 <i>Bitte geben Sie den ungefähren Zeitpunkt an, wenn Sie sich unsicher sind.</i>"
-/"Date started cohabiting Partner": ARRAY[1..20] OF Tdate, Nocohab, DONTKNOW, REFUSAL
+/"Date started cohabiting Partner": ARRAY[1..20] OF Tdate, Nocohab (-4), DONTKNOW, REFUSAL
 
 LHI05a_ "Waren Sie und <b>^{LHI03_[I]}</b> <b> </b> verheiratet?"
 /"Married to Partner": ARRAY[1..20] OF Tyesno, DONTKNOW, REFUSAL
@@ -1201,7 +1211,7 @@ LHI25_ "Lebt <b>^{LHI24_[I]}</b> noch?"
 
 LHI26_ "<b>^{LHI24_[I]}</b> ist oder war ein…"
 /"Child Type": ARRAY[1..20] OF 
-	(Biological (1) "Leibliche Kinder", 
+	(Biological (1) "Leibliches Kind", 
 	Adopted (2) "Adoptiertes Kind" , 
 	Step (3) "Stiefkind"), REFUSAL, NA
 
@@ -1302,7 +1312,7 @@ youngchildname "Name des jüngsten Kindes": STRING[20], DK, RF
 
 AUXFIELDS
 
-LHIINT "<b>Abschnitt 2 von 9: Ihre Partnerschaften und Kinder...</b><br />
+LHIINT "<b>Abschnitt 2 von 9: Ihre Partnerschaften und Kinder</b><br />
 Nun würden wir Ihnen gerne einige Fragen über Ihre früheren Partnerschaften und Ihre Kinder stellen. Für uns ist es sehr wichtig zu erfahren, wann welche Ereignisse passiert sind, um Ihren Lebenslauf besser verstehen zu können."
 /"Life History Intro": Tcontinue, EMPTY
 
@@ -2654,7 +2664,7 @@ FER03 "War diese Schwangerschaft geplant?"
 	no (2) "Nein", 
 	either (3) "Ich habe es auf mich zukommen lassen"), DK, RF
 
-FER04 "Kam diese Schwangerschaft früher als Sie wollten, später als Sie wollten oder genau zum richtigen Zeitpunkt?"
+FER04 "Kam diese Schwangerschaft früher, als Sie wollten, später, als Sie wollten, oder genau zum richtigen Zeitpunkt?"
 /"Pregnancy Timing": 
 	(sooner (1) "Früher", 
 	later (2) "Später", 
@@ -2672,7 +2682,7 @@ FER04c "Kam diese Schwangerschaft früher als Sie wollten, später als Sie wollt
 	later (2) "Später", 
 	justright (3) "Genau zum richtigen Zeitpunkt"), DK, RF
 
-FER04d "Haben Sie jemals versucht, schwanger zu werden, aber eine Schwangerschaft ist innerhalb von mindestens 12 Monaten nicht eingetreten?"
+FER04d "Haben Sie jemals versucht, schwanger zu werden, aber eine Schwangerschaft ist innerhalb von mindestens zwölf Monaten nicht eingetreten?"
 /"Problems conceiving": Tyesno, DK, RF
 
 FER05 "Manche Menschen sind körperlich nicht dazu in der Lage, Kinder zu bekommen beziehungsweise zu zeugen. Soweit Sie es wissen, wäre es für Sie rein körperlich möglich, Kinder zu bekommen beziehungsweise zu zeugen?"
@@ -2701,7 +2711,7 @@ FER08 "Soweit Sie es wissen, wäre es für Ihren Partner oder Ihre Partnerin rei
 FER09 "Ist Ihr Partner oder Ihre Partnerin sterilisiert oder aufgrund einer Operation nicht in der Lage, ein Kind oder ein weiteres Kind zu bekommen?"
 /"Partner Sterilized": Tyesno, DK, RF
 
-FER10a  "Versuchen Sie oder Ihre Partnerin schwanger zu werden?"
+FER10a  "Versuchen Sie oder Ihre Partnerin, schwanger zu werden?"
 /"Trying to get pregnant": Tyesno, DK, RF
 
 FER10b "Wann haben Sie oder Ihre Partnerin erstmalig den Versuch unternommen, schwanger zu werden? [MM/JJJJ]<br />
@@ -2758,7 +2768,10 @@ FER16c "Ganz allgemein gesprochen, wie hoch ist Ihrer Meinung nach die ideale Ki
 /"General ideal family size": 0..10, DK, RF, NA
 
 FER17 "Würden Sie als erstes beziehungsweise nächstes Kind lieber einen Jungen oder ein Mädchen haben?"
-/"Child Gender Preference": (boy (1) "Boy", female (2) "Female", nomatter (3) "It does not matter"), DK, RF 
+/"Child Gender Preference": 
+	(boy (1) "Junge", 
+	female (2) "Mädchen", 
+	nomatter (3) "Es spielt keine Rolle"), DK, RF 
 
 FER21 "Wie alt waren Sie, als Ihre erste Menstruation einsetzte?"
 /"Age of first menstruation": 0..50, DK, RF, NA
@@ -2771,7 +2784,7 @@ FER23 "Wie alt waren Sie, als Sie zum ersten Mal Geschlechtsverkehr hatten? Wenn
 
 AUXFIELDS
 
-FERINT "<b>Abschnitt 3 von 9: Rund ums Kinderkriegen...</b><br />
+FERINT "<b>Abschnitt 3 von 9: Rund ums Kinderkriegen</b><br />
 Dieser Abschnitt enthält einige sehr persönliche Fragen. Ihre Angaben werden streng vertraulich gehandhabt."
 /"Fertility Intro": Tcontinue, EMPTY
 
@@ -3008,23 +3021,24 @@ HHD15c "Den zeitlichen Umfang Ihrer eigenen Erwerbsarbeit"
 HHD15d "Den zeitlichen Umfang der Erwerbsarbeit Ihres Partners oder Ihrer Partnerin"
 /"Decision Making: time partner spends working": Ttasks, DK, RF
 
-HHD16 "Wie organisieren Sie in Ihrer Partnerschaft Ihre gemeinsamen Ausgaben für Miete, Lebensmittel usw.?<br /> 
+HHD16 "Wie organisieren Sie und Ihr Partner oder Ihre Partnerin das Haushaltseinkommen? <br /> 
 <i>Bitte geben Sie diejenige Möglichkeit an, die am ehesten auf Sie zutrifft.</i>"
 /"How income is organized": 
-	(respondent (1) "Ich verwalte das ganze Geld und gebe meinem Partner seinen oder meiner Partnerin ihren Anteil", 
-	partner (2) "Mein Partner oder meine Partnerin verwaltet das ganze Geld und gibt mir meinen Anteil", 
-	pool (3) "Wir legen das gesamte Geld zusammen und jeder nimmt sich, was er braucht", 
-	poolsome (4) "Wir legen einen Teil des Geldes zusammen und jeder behält den Rest für sich", 
-	separate (5) "Jeder verwaltet sein eigenes Geld", 
+	(respondent (1) "Ich verwalte das ganze Geld und gebe meinem Partner seinen oder meiner Partnerin ihren Anteil.", 
+	partner (2) "Mein Partner oder meine Partnerin verwaltet das ganze Geld und gibt mir meinen Anteil.", 
+	pool (3) "Wir legen das gesamte Geld zusammen und jeder nimmt sich, was er braucht.", 
+	poolsome (4) "Wir legen einen Teil des Geldes zusammen und jeder behält den Rest für sich.", 
+	separate (5) "Jeder verwaltet sein eigenes Geld.", 
 	other (6) "Sonstiges"), DK, RF
 
-HHD17 "Wie organisieren Sie Ihre gemeinsamen monatlichen Ausgaben (zum Beispiel Miete, Lebensmittel, etc.)?"
+HHD17 "Wie organisieren Sie in Ihrer Partnerschaft Ihre gemeinsamen Ausgaben für Miete, Lebensmittel usw.?<br /> 
+<i>Bitte geben Sie diejenige Möglichkeit an, die am ehesten auf Sie zutrifft.</i>"
 /"How expenses are organized": 
-	(ipay (1) "Ich bezahle alles alleine", 
-	sopays (2) "Mein Partner oder meine Partnerin bezahlt alles alleine", 
-	equal (3) "Jeder zahlt ungefähr gleich viel", 
-	relative (4) "Jeder trägt ungefähr seinem Einkommen entsprechend bei", 
-	norule (5) "Jeder von uns beiden zahlt einen Teil, aber wir haben keine feste Regel"), DK, RF
+	(ipay (1) "Ich bezahle alles alleine.", 
+	sopays (2) "Mein Partner oder meine Partnerin bezahlt alles alleine.", 
+	equal (3) "Jeder zahlt ungefähr gleich viel.", 
+	relative (4) "Jeder trägt ungefähr seinem Einkommen entsprechend bei.", 
+	norule (5) "Jeder von uns beiden zahlt einen Teil, aber wir haben keine feste Regel."), DK, RF
 
 //Help & Support
 
@@ -3061,7 +3075,7 @@ HHD23_ "Bitte nennen Sie alle Alternativen, die Sie regelmäßig nutzen."
 	De_aupair (8) "Kindermädchen, Au pair oder eine andere bezahlte Person, die im Haushalt wohnt",
 	Other (9) "Andere Form der bezahlten Kinderbetreuung"), DK, RF, EMPTY
 
-HHD23a "Wie oft nutzen Sie für die Kinderbetreuung eine Krippe oder Kindertagesstätte ("Kita") für Kinder unter drei Jahren?<br />
+HHD23a "Wie oft nutzen Sie für die Kinderbetreuung eine Krippe oder Kindertagesstätte (Kita) für Kinder unter drei Jahren?<br />
 <i>Bitte geben Sie die Häufigkeit pro Woche, Monat oder Jahr an.</i>"
 / "Childcare Frequency: Daycare": 0..365, DK, RF
 
@@ -3125,7 +3139,7 @@ HHD23iu "mal pro..."
 / "Childcare Frequency [UNIT]: Other": Ttimeunit, DK, RF
 
 HHD24 "Wieviel zahlt Ihr Haushalt normalerweise für Kinderbetreuung? Falls Ihr Haushalt nichts für Kinderbetreuung bezahlt, tragen Sie bitte eine 0 ein. <br />
-<i>Bitte geben Sie dien Häufigkeit pro Woche, Monat oder Jahr an.</i>"
+<i>Bitte geben Sie die Häufigkeit pro Woche, Monat oder Jahr an.</i>"
 /"Cost of Childcare": 0..9999999, DK, RF
 
 HHD24u "mal pro ..."
@@ -3150,7 +3164,7 @@ HHD28 "Hat Ihnen in den letzten zwölf Monaten jemand regelmäßig bei Haushalts
 /"Regular help with household tasks": Tyesno, DK, RF, NA
 
 HHD29_ "Von wem haben Sie diese Hilfe regelmäßig erhalten? Bitte nennen Sie alle Personen. Aber berücksichtigen Sie nur Personen, die das nicht beruflich tun."
-/"Regular help with household tasks": SET OF Trelationship2, DK, RF, NA
+/"Regular help with household tasks": SET OF Trelationship4, DK, RF, NA
 
 HHD30 "Wie oft hat Ihnen jemand bei der Hausarbeit geholfen? <br />
 <i>Bitte geben Sie die Häufigkeit pro Woche, Monat oder Jahr an.</i>"
@@ -3671,7 +3685,10 @@ GEN16a "Wie eng fühlen Sie sich mit Ihrer leiblichen Mutter heute verbunden?"
 	very (5) "Sehr eng"), DK, RF
 
 GEN17 "Wenn Sie an die letzten sechs Monate zurückdenken, inwieweit war Ihre Mutter aufgrund eines gesundheitlichen Problems in der Fähigkeit eingeschränkt, normale Alltagsaktivitäten auszuführen? Würden Sie sagen, sie war..."
-/"Everyday Activity Limitation of Mother": Tyesno, DK, RF
+/"Everyday Activity Limitation of Mother": 
+	(severely (1) "Stark eingeschränkt",
+	notseverely (2) "Leicht eingeschränkt",
+	notlimited (3) "Nicht eingeschränkt"), DONTKNOW, REFUSAL
 
 GEN18 "Wie wohnt Ihre Mutter?"
 /"Mothers Housing Type": Thousing, DK, RF
@@ -3845,7 +3862,7 @@ GEN47 "Wie war die Beziehung zwischen Ihren Eltern bis zu Ihrem 15. Geburtstag?<
 
 // Anmerkung für infas: hier bitte die notwendigen Variablen ergänzen
 GEN48 "Welcher Berufsgruppe hat Ihr Vater angehört, als Sie 15 Jahre alt waren?"
-/"Fathers Occupation when R was age 15 (see code ISCO)": STRING, Home, DK, RF, NA
+/"Fathers Occupation when R was age 15 (see code ISCO)": STRING, Home (-4), DK, RF, NA
 GEN48ISCO "Welcher Berufsgruppe hat Ihr Vater angehört, als Sie 15 Jahre alt waren?" / "Fathers Occupation when R was age 15 (see code ISCO)": STRING[4], DK, RF, NA
 
 //Education of Father
@@ -3865,7 +3882,7 @@ GEN49b2 "An welcher Art Hochschule oder Einrichtung hat Ihr Vater diesen Abschlu
 
 // Anmerkung für infas: hier bitte die notwendigen Variablen ergänzen
 GEN50 "Welcher Berufsgruppe hat Ihre Mutter angehört, als Sie 15 Jahre alt waren?"
-/"Mothers Occupation when R was age 15 (see code ISCO)": STRING, Home, DK, RF, NA
+/"Mothers Occupation when R was age 15 (see code ISCO)": STRING, Home (-4), DK, RF, NA
 GEN50ISCO "Welcher Berufsgruppe hat Ihre Mutter angehört, als Sie 15 Jahre alt waren?" / "Mothers Occupation when R was age 15 (see code ISCO)": STRING[4], DK, RF, NA
 
 //Education of Mother
@@ -4377,7 +4394,7 @@ WEL09a "Es gibt genug Menschen, auf die ich mich bei Problemen stützen kann."
 WEL09b "Ich fühle eine allgemeine Leere."
 /"Loneliness: General sense of emptiness": Tmoreorless, DONTKNOW, REFUSAL
 
-WEL09c "Ich vermisse es Menschen um mich zu haben."
+WEL09c "Ich vermisse es, Menschen um mich zu haben."
 /"Loneliness: Miss having people around": Tmoreorless, DONTKNOW, REFUSAL
 
 WEL09d "Es gibt viele Menschen, auf die ich mich absolut verlassen kann."
@@ -4409,7 +4426,7 @@ WEL11e "Ich war traurig."
 
 AUXFIELDS
 
-WELINT "<b>Abschnitt 6 von 9: Über Ihre Gesundheit und Ihr Wohlbefinden...</b><br />
+WELINT "<b>Abschnitt 6 von 9: Über Ihre Gesundheit und Ihr Wohlbefinden</b><br />
 Nun folgen einige Fragen zu Ihrem allgemeinen Wohlbefinden und Ihrem Gesundheitszustand."
 /"Wellbeing Intro": Tcontinue, EMPTY
 
@@ -4462,8 +4479,9 @@ WRK01 "Zu Beginn der Befragung haben Sie angegeben, dass Sie <B>^{BDEMOGRAPHICS.
 
 // Notiz an Infas: bitte die Standard-Variablen für die Erfassung der ISCO-Kodierung aufnehmen; dann kann auf WRK02 verzichtet bzw. integriert werden
 WRK02 "Sind Sie in der letzten Woche einer bezahlten Tätigkeit nachgegangen?"
-/"Employment Status": Tactstat, DONTKNOW, REFUSAL
+/"Employment Status": Tempstat, DONTKNOW, REFUSAL
 
+// Bezieht sich auf WRK01 nicht WRK02 (Reihenfolge im Ablauf geändert)
 WRK03 "Seit wann sind Sie in dieser Situation? [MM/JJJJ]<br />
 <i>Bitte geben Sie den ungefähren Zeitpunkt an, wenn Sie sich unsicher sind.</i>"
 /"Date of starting status": Tdate, DONTKNOW, REFUSAL
@@ -4472,7 +4490,7 @@ WRK03 "Seit wann sind Sie in dieser Situation? [MM/JJJJ]<br />
 
 // Notiz an Infas: s.o. bitte die Standard-Variablen für ISCO programmieren
 WRK04 "Was ist Ihre derzeitige Tätigkeit? Bitte nennen Sie die Haupttätigkeit."
-/"Occupation (ISCO 08)": STRING, Home, DONTKNOW, REFUSAL
+/"Occupation (ISCO 08)": STRING, Home (-4), DONTKNOW, REFUSAL
 WRK04ISCO "Was ist Ihre derzeitige Tätigkeit? Bitte nennen Sie die Haupttätigkeit." / "Occupation (ISCO 08)": STRING[4], DONTKNOW, REFUSAL
 
 // WRK05 "Are you self-employed or are you an employee?" / "Self-Employed or Employee": (self (1) "Self-Employed", employee (2) "Employee"), RF, DK}
@@ -4487,7 +4505,7 @@ WRK07 "Wie viele Stunden arbeiten Sie normalerweise pro Woche, einschließlich �
 <i>Bitte berücksichtigen Sie dabei alle Ihre Erwerbstätigkeiten.</i>"
 /"Hours worked per week": 0..200, DONTKNOW, REFUSAL
 
-WRK08 "Wie lange brauchen Sie an einem normalen Arbeitstag von Zuhause zu Ihrem Arbeitsplatz.<br/> 
+WRK08 "Wie lange brauchen Sie an einem normalen Arbeitstag von Zuhause zu Ihrem Arbeitsplatz?<br/> 
 <i>Bitte geben Sie die Antwort in Stunden und Minuten an. [HH:MM]</i>"
 /"Commute Time [MINUTES]": Ttimedur, DK, RF
 
@@ -4541,7 +4559,7 @@ WRK14 "Arbeiten Sie in diesen Fällen normalerweise zu Hause oder woanders?"
 	elsewhere (2) "Woanders", 
 	varies (3) "Wechselnd", DONTKNOW, REFUSAL)
 
-WRK15a "Ich bin zu müde von der Arbeit nach Hause gekommen, um Hausarbeiten zu erledigen, die erledigt werden mussten"
+WRK15a "Ich bin zu müde von der Arbeit nach Hause gekommen, um Hausarbeiten zu erledigen, die erledigt werden mussten."
 /"Work balance: too tired to do chores": Tfreq2 , DONTKNOW, refusal
 
 WRK15b "Für mich war es schwierig aufgrund der Zeit, die ich für meinen Beruf benötigt habe, meinen Familienpflichten nachzukommen."
@@ -4586,7 +4604,7 @@ WRK20 "Ermöglicht Ihr Arbeitgeber flexible Arbeitszeitregelungen für private V
 WRK21 "Verdienen Sie momentan Geld mit einer zusätzlichen Beschäftigung oder einem zusätzlichen Unternehmen?"
 /"Additional job or business": Tyesno, DONTKNOW, REFUSAL
 
-// WRK22 "Wie viele Stunden pro Woche arbeiten Sie normalerweise für Ihre zusätzliche Beschäftigung beziehungsweise Ihr zusätzliches Unternehmen, wenn Sie Überstunden dazurechnen?" /"Hours worked per week in additional job or business": 0..200, DONTKNOW, REFUSAL
+WRK22 "Wie viele Stunden pro Woche arbeiten Sie normalerweise für Ihre zusätzliche Beschäftigung beziehungsweise Ihr zusätzliches Unternehmen, wenn Sie Überstunden dazurechnen?" /"Hours worked per week in additional job or business": 0..200, DONTKNOW, REFUSAL
 
 // Self-Employed
 
@@ -4611,8 +4629,8 @@ WRK26 "Hatten Sie direkt vor Ihrer derzeitigen Situation eine Arbeit oder ein Un
 
 // Notiz an Infas: s.o. bitte die Standard-Variablen für ISCO programmieren
 WRK27 "Was war Ihre letzte Tätigkeit? Bitte beschreiben Sie die Haupttätigkeit, die Sie ausgeführt haben. Wenn Sie in zwei oder mehr Stellen oder Firmen beschäftigt waren, wählen Sie bitte nur diejenige aus, für die Sie die meisten Arbeitsstunden geleistet haben."
-/"Last Occupation (ISCO 08)": STRING, Home, DONTKNOW, REFUSAL
-WRK27ISCO "Was war Ihre letzte Tätigkeit? Bitte beschreiben Sie die Haupttätigkeit, die Sie ausgeführt haben. <newline> <I>Wenn Sie in zwei oder mehr Stellen oder Firmen beschäftigt waren, wählen Sie bitte nur diejenige aus, für die Sie die meisten Arbeitsstunden geleistet haben.<I>" / "Last Occupation (ISCO 08)": STRING[4], Home, DONTKNOW, REFUSAL
+/"Last Occupation (ISCO 08)": STRING, Home (-4), DONTKNOW, REFUSAL
+WRK27ISCO "Was war Ihre letzte Tätigkeit? Bitte beschreiben Sie die Haupttätigkeit, die Sie ausgeführt haben. <newline> <I>Wenn Sie in zwei oder mehr Stellen oder Firmen beschäftigt waren, wählen Sie bitte nur diejenige aus, für die Sie die meisten Arbeitsstunden geleistet haben.<I>" / "Last Occupation (ISCO 08)": STRING[4], Home (-4), DONTKNOW, REFUSAL
 
 WRK28 "Waren Sie..."
 /"Previous employment status": 
@@ -4646,7 +4664,7 @@ WRK31 "Haben Sie vor, innerhalb der nächsten drei Jahre eine Arbeitsstelle anzu
 // PARTNER EMPLOYMENT
 
 WRK32 "Die folgenden Fragen handeln von der aktuellen Beschäftigung und den täglichen Aktivitäten Ihres Partners oder Ihrer Partnerin. Früher im Interview haben Sie angegeben, dass Ihr Partner oder Ihre Partnerin <b>^{BDEMOGRAPHICS.DEM26}</b> ist. Bitte geben Sie an dieser Stelle etwas genauer an, was Ihr Partner oder Ihre Partnerin tut. Ist er oder sie in der letzten Woche einer bezahlten Tätigkeit nachgegangen?"
-/"Activity Status": Tactstat, DONTKNOW, REFUSAL
+/"Partner Employment Status": Tempstat, DONTKNOW, REFUSAL
 
 //Partners in Paid Work
 
@@ -4654,7 +4672,7 @@ WRK32 "Die folgenden Fragen handeln von der aktuellen Beschäftigung und den tä
 
 // Notiz an Infas: s.o. bitte die Standard-Variablen für ISCO programmieren
 WRK34 "Was ist seine oder ihre derzeitige Tätigkeit? Bitte nennen Sie die Haupttätigkeit."
-/"Partners Occupation (ISCO 08)": STRING, Home, DONTKNOW, REFUSAL
+/"Partners Occupation (ISCO 08)": STRING, Home (-4), DONTKNOW, REFUSAL
 WRK34ISCO "Was ist seine oder ihre derzeitige Tätigkeit? Bitte nennen Sie die Haupttätigkeit." / "Partners Occupation (ISCO 08)": STRING[4], DONTKNOW, REFUSAL
 
 WRK35 "Wie viele Stunden arbeitet er oder sie normalerweise pro Woche, einschließlich Überstunden?<br/>
@@ -4734,7 +4752,7 @@ WRK46 "Ermöglicht sein oder ihr Arbeitgeber flexible Arbeitszeitregelungen für
 WRK47 "Verdient er oder sie momentan Geld mit einer zusätzlichen Beschäftigung oder einem zusätzlichen Unternehmen?"
 /"Partners additional job or business": Tyesno, DONTKNOW, REFUSAL
 
-// WRK48 "Wie viele Stunden pro Woche arbeitet er oder sie normalerweise für diese zusätzliche Beschäftigung beziehungsweise das zusätzliche Unternehmen, wenn Sie Überstunden dazurechnen?" /"Partners hours worked per week in additional job or business": 0..200, DONTKNOW, REFUSAL
+WRK48 "Wie viele Stunden pro Woche arbeitet er oder sie normalerweise für diese zusätzliche Beschäftigung beziehungsweise das zusätzliche Unternehmen, wenn Sie Überstunden dazurechnen?" /"Partners hours worked per week in additional job or business": 0..200, DONTKNOW, REFUSAL
 
 // Partner is Self-Employed
 
@@ -4761,7 +4779,7 @@ WRK50 "Warum hat er oder sie die vorherige Tätigkeit beendet beziehungsweise da
 
 AUXFIELDS
 
-WRKINT "<b>Abschnitt 7 von 9: Zur Beschäftigungssituation...</b><br />
+WRKINT "<b>Abschnitt 7 von 9: Zur Beschäftigungssituation</b><br />
 Nun folgen einige Fragen zu Ihrer Beschäftigungssituation und der Ihres Partners oder Ihrer Partnerin."
 /"Work Intro": Tcontinue, EMPTY
 
@@ -4784,7 +4802,7 @@ IF WRK02 = 1 THEN
       WRK14
    ENDIF
    WRK15 WRK15a WRK15b WRK15c WRK15d WRK16a WRK16b
-   IF NOT(BDEMOGRAPHICS.DEM06 = 3) THEN
+   IF (BDEMOGRAPHICS.DEM06 = 2) THEN
       WRK17 WRK18 {WRK19} WRK20 WRK21
       IF WRK21 = yes THEN
          WRK22
@@ -4828,8 +4846,8 @@ IF BDEMOGRAPHICS.DEM21a = yes THEN
          WRK41 
       ENDIF
       WRK42
-      IF NOT(BDEMOGRAPHICS.DEM26 = 3) THEN
-         WRK43 WRK44 WRK46 WRK47 
+      IF (BDEMOGRAPHICS.DEM26 = 2) THEN
+         WRK43 WRK44 WRK45 WRK46 WRK47 
          IF WRK47 = yes THEN
             WRK48
          ENDIF   
@@ -4947,8 +4965,14 @@ INC14_ "Von wem haben Sie beziehungsweise Ihr Partner oder Ihre Partnerin ein so
 INC15 "In welchem Jahr haben Sie oder Ihr Partner beziehungsweise Ihre Partnerin zuletzt ein solches Geschenk oder Erbe erhalten?"
 /"Received large financial transfer [YEAR]": Tyear, DK, RF
 
-INC03 "Ein Haushalt kann verschiedene Einkommensquellen haben und mehrere Haushaltsmitglieder können dazu beitragen. Wenn Sie an Ihr gesamtes monatliches Haushaltseinkommen denken, wie kommt Ihr Haushalt damit zurecht?"
-/"Can make ends meet": (greatdiff (1) "With great difficulty", diff (2) "With difficulty", somediff (3) "With some difficulty", faireasy (4) "Fairly easily", easy (5) "Easily", veasy (6) "Very easily"), DONTKNOW, REFUSAL
+INC03 "Ein Haushalt kann verschiedene Einkommensquellen haben, und mehrere Haushaltsmitglieder können dazu beitragen. Wenn Sie an Ihr gesamtes monatliches Haushaltseinkommen denken, wie kommt Ihr Haushalt damit zurecht?"
+/"Can make ends meet": 
+	(greatdiff (1) "Mit großen Schwierigkeiten", 
+	diff (2) "Mit Schwierigkeiten", 
+	somediff (3) "Mit kleineren Schwierigkeiten", 
+	faireasy (4) "Relativ gut", 
+	easy (5) "Gut", 
+	veasy (6) "Sehr gut"), DONTKNOW, REFUSAL
 
 INC04a "... Ihr Haus oder Ihre Wohnung ausreichend warm zu halten?"
 /"HH can afford: keep house warm": Tyesno, DONTKNOW, REFUSAL
@@ -5018,7 +5042,7 @@ INC08_ "Im Folgenden sind verschiedene Arten von Einkommen aufgelistet. Bitte ge
 	widows (5) "Witwen- beziehungsweise Witwerrente, Hinterbliebenenrente", 
 	disability (6) "Erwerbs- oder Berufsunfähigkeitsrente, Invaliditäts- oder Krankengeld", 
 	careinsurance (7) "Leistungen der Pflegeversicherung", 
-	unemployment (8) "Arbeitslosengeld I", 
+	unemployment (8) "Arbeitslosengeld I (ALG I)", 
 	social (9) "Sozialhilfe oder Arbeitslosengeld II beziehungsweise Hartz 4", 
 	scholar (10) "Studienkredit, BAföG oder Stipendium", 
 	pleave (11) "Elterngeld", 
@@ -5158,8 +5182,10 @@ BLOCK ATTITUDES
 
 FIELDS 
 
-ATT01 "Würden Sie generell sagen, dass man den meisten Menschen vertrauen kann, oder dass man im Umgang mit anderen Menschen sehr vorsichtig sein muss?"
-/"General Trust": (trust (1)"Most people can be trusted", notrust (2) "Need to be very careful"), DONTKNOW, REFUSAL
+ATT01 "Würden Sie generell sagen, dass man den meisten Menschen vertrauen kann oder dass man im Umgang mit anderen Menschen sehr vorsichtig sein muss?"
+/"General Trust": 
+	(trust (1)"Man kann den meisten Menschen vertrauen.", 
+	notrust (2) "Man muss sehr vorsichtig sein."), DONTKNOW, REFUSAL
 
 ATT02 "Planen Sie normalerweise Ihre Zukunft oder nehmen Sie jeden Tag so wie er kommt? Bitte äußern Sie Ihre Meinung auf einer Skala von 0 bis 10, wobei 0 für ‚Ich plane meine Zukunft so weit wie möglich‘ und 10 für ‚Ich nehme einfach jeden Tag so wie er kommt‘ steht."
 /"Planning Scale": 0..10, DONTKNOW, REFUSAL
@@ -5258,20 +5284,26 @@ ATT10 "Unabhängig davon, ob Sie einer bestimmten Religionsgemeinschaft angehör
 /"Religiosity": 0..10, DONTKNOW, REFUSAL
 
 ATT11a "Stellen Sie sich eine Familie mit Mutter, Vater und einem zweijährigen Kind vor. Sollte die Mutter Vollzeit, Teilzeit oder gar nicht arbeiten?"
-/"Working hours of parents: Mother": ( ft (1) "Full-time", pt (2) "Part-time", none (3) "Not at all"), DK, RF
+/"Working hours of parents: Mother": 
+	(ft (1) "Vollzeit", 
+	pt (2) "Teilzeit", 
+	none (3) "Gar nicht"), DK, RF
 
 ATT11b "Wie viele Stunden sollte die Mutter arbeiten?"
 /"Working hours of parents: Mother [Hours]": 0..40, DK, RF
 
 ATT11c "<b><b>Stellen Sie sich eine Familie mit Mutter, Vater und einem zweijährigen Kind vor. Sollte der Vater Vollzeit, Teilzeit oder gar nicht arbeiten?</b></b>"
-/"Working hours of parents: Father": ( ft (1) "Full-time", pt (2) "Part-time", none (3) "Not at all"), DK, RF
+/"Working hours of parents: Father": 
+	(ft (1) "Vollzeit", 
+	pt (2) "Teilzeit", 
+	none (3) "Gar nicht"), DK, RF
 
 ATT11d "Wie viele Stunden sollte der Vater arbeiten?"
 /"Working hours of parents: Father [Hours]": 0..40, DK, RF
 
 AUXFIELDS
 
-ATTINT "Abschnitt 9 von 9: Ihre Einstellungen und Werte...<br />
+ATTINT "Abschnitt 9 von 9: Ihre Einstellungen und Werte<br />
 Der letzte Teil dieser Umfrage beschäftigt sich mit Ihren Einstellungen und Werten. Dies ist sehr wichtig, damit wir Ihre Ansichten über Familie und Beziehungen besser verstehen können."
 /"Attitudes Intro": TContinue, EMPTY
 
