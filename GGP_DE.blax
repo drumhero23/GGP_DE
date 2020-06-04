@@ -509,9 +509,13 @@ DEM07a "Welchen höchsten allgemeinbildenden Schulabschluss haben Sie?"
 /"School Leaving Certificate (Germany)"
 : Tgermed1, DK, RF
 
+DEM07a_other "Bitte nennen Sie diesen anderen Abschluss" / "Other SLC Respondent (Germany)": STRING
+
 DEM07b1 "Welchen höchsten beruflichen Ausbildungsabschluss haben Sie?"
 /"Vocational Education (Germany)"
 : Tgermed2, DK, RF
+
+DEM07b1_other "Bitte nennen Sie diesen anderen Abschluss" / "Other VE Respondent (Germany)": STRING
 
 DEM07b2 "An welcher Art Hochschule oder Einrichtung haben Sie diesen Abschluss (beziehungsweise den höchsten dieser Abschlüsse) erreicht?"
 /"Type of academic institution (Germany)"
@@ -667,9 +671,13 @@ DEM25a "Welchen höchsten allgemeinbildenden Schulabschluss hat Ihr Partner oder
 /"School leaving certificate current partner (Germany)"
 : Tgermed1, DK, RF
 
+DEM25a_other "Bitte nennen Sie diesen anderen Abschluss" / "Other SLC Partner (Germany)": STRING
+
 DEM25b1 "Welchen höchsten beruflichen Ausbildungsabschluss hat Ihr Partner oder Ihre Partnerin?"
 /"Vocational education current partner (Germany)"
 : Tgermed2, DK, RF
+
+DEM25b1_other "Bitte nennen Sie diesen anderen Abschluss" / "Other VE Partner (Germany)": STRING
 
 DEM25b2 "An welcher Art Hochschule oder Einrichtung hat Ihr Partner oder Ihre Partnerin diesen Abschluss (bzw. den höchsten dieser Abschlüsse) erreicht?"
 /"Type of academic institution current partner (Germany)"
@@ -874,11 +882,17 @@ ENDIF
 
 DEM06 DEM07a
 
-IF (DEM07a = 1403) OR (DEM07a = 1404) OR (DEM07a = 1405) OR (DEM07a = 1406) OR (DEM07a = 1407) OR (DEM07a = 1408) OR (DEM07a = 1409) THEN
+IF (DEM07a = 1409) THEN
+  DEM07a_other DEM08a_m DEM08a_y
+END IF
+IF (DEM07a = 1403) OR (DEM07a = 1404) OR (DEM07a = 1405) OR (DEM07a = 1406) OR (DEM07a = 1407) OR (DEM07a = 1408) THEN
     DEM08a_m DEM08a_y
 ENDIF 
 DEM07b1 
-IF (DEM07b1 = 1404) OR (DEM07b1 = 1405) OR (DEM07b1 = 1406) OR (DEM07b1 = 1407) OR (DEM07b1 = 1408) OR (DEM07b1 = 1409) OR (DEM07b1 = 1410) OR (DEM07b1 = 1411) OR (DEM07b1 = 1412) OR (DEM07b1 = 1413) OR (DEM07b1 = 1414) OR (DEM07b1 = 1415) OR (DEM07b1 = 1416) THEN
+IF (DEM07b1 = 1416) THEN
+  DEM07b1_other
+ENDIF
+IF (DEM07b1 = 1404) OR (DEM07b1 = 1405) OR (DEM07b1 = 1406) OR (DEM07b1 = 1407) OR (DEM07b1 = 1408) OR (DEM07b1 = 1409) OR (DEM07b1 = 1410) OR (DEM07b1 = 1411) OR (DEM07b1 = 1412) OR (DEM07b1 = 1413) OR (DEM07b1 = 1414) OR (DEM07b1 = 1415) THEN
     DEM08b_m DEM08b_y
 ENDIF
 IF (DEM07b1 = 1412) OR (DEM07b1 = 1413) OR (DEM07b1 = 1414) THEN
@@ -933,7 +947,14 @@ IF DEM21a = yes THEN
          DEM24d3
       ENDIF
    ENDIF
-   DEM25a DEM25b1
+   DEM25a 
+   IF (DEM25a = 1409) THEN
+     DEM25a_other
+   ENDIF
+   DEM25b1
+   IF (DEM25b1 = 1416) THEN
+      DEM25b1_other
+   ENDIF
    IF (DEM25b1 = 1412) OR (DEM25b1 = 1413) OR (DEM25b1 = 1414) THEN
 	  DEM25b2
    ENDIF
@@ -2730,7 +2751,7 @@ FER11_ "Haben Sie folgende Maßnahmen ergriffen, um schwanger zu werden? Bitte n
 	other (7) "Andere medizinische Behandlung", 
 	nouse (8) "Es wurden keine Maßnahmen ergriffen"), RF, DONTKNOW
 
-FER12_ "Haben Sie irgendwelche Maßnahmen ergriffen, um eine Schwangerschaft zu verhüten? Bitte nennen Sie alle Maßnahmen, die ergriffen wurden."
+FER12_ "Haben Sie einer der folgenden Maßnahmen ergriffen, um eine Schwangerschaft zu verhüten? Bitte nennen Sie alle Maßnahmen, die ergriffen wurden."
 /"Contraception": 
 	SET OF 
 	(nouse (0) "Keine Verhütung",
@@ -2758,10 +2779,10 @@ FER14 "Haben Sie vor, in den nächsten drei Jahren ein Kind oder ein weiteres Ki
 FER15 "Angenommen, Sie würden in den nächsten drei Jahren kein Kind oder kein weiteres Kind bekommen, möchten Sie denn überhaupt noch Kinder oder weitere Kinder?"
 /"Intention to have a child at all": Tintention, DK, RF
 
-FER16a "Wie viele sowohl leibliche als auch adoptierte Kinder möchten Sie insgesamt noch haben? Bitte zählen Sie die bereits geborenen oder adoptierten Kinder nicht mit."
+FER16a "Wie viele leibliche und adoptierte Kinder wollen Sie insgesamt haben? Bitte zählen Sie alle Ihre Kinder mit."
 /"Total number of children intended": 0..10, DK, RF
 
-FER16b "Was ist für Sie persönlich die ideale Kinderzahl, die Sie gerne hätten oder gehabt hätten?"
+FER16b "Was ist für Sie persönlich die ideale Kinderzahl, die Sie insgesamt in Ihrem Leben gerne hätten?"
 /"Personal ideal family size": 0..10, DK, RF, NA
 
 FER16c "Ganz allgemein gesprochen, wie hoch ist Ihrer Meinung nach die ideale Kinderzahl für eine Familie?"
@@ -3042,7 +3063,7 @@ HHD17 "Wie organisieren Sie in Ihrer Partnerschaft Ihre gemeinsamen Ausgaben fü
 
 //Help & Support
 
-HHD18	"Haben Sie in den letzten zwölf Monaten von Verwandten oder Freunden oder anderen Personen, die das nicht beruflich tun, regelmäßige Unterstützung bei der Kinderbetreuung bekommen?"
+HHD18	"Haben Sie in den letzten zwölf Monaten von Bekannten, Freunden oder Verwandten regelmäßige Unterstützung bei der Kinderbetreuung bekommen?"
 /"Regular help with childcare": Tyesno, DK, RF
 
 HHD19_ "Von wem haben Sie Hilfe bei der Kinderbetreuung erhalten?<br /> 
@@ -3138,12 +3159,10 @@ HHD23hu "mal pro..."
 HHD23iu "mal pro..."
 / "Childcare Frequency [UNIT]: Other": Ttimeunit, DK, RF
 
-HHD24 "Wieviel zahlt Ihr Haushalt normalerweise für Kinderbetreuung? Falls Ihr Haushalt nichts für Kinderbetreuung bezahlt, tragen Sie bitte eine 0 ein. <br />
-<i>Bitte geben Sie die Häufigkeit pro Woche, Monat oder Jahr an.</i>"
+HHD24 "Wieviel zahlt Ihr Haushalt normalerweise für Kinderbetreuung für alle Kinder im Monat? Falls Ihr Haushalt nichts für Kinderbetreuung bezahlt, tragen Sie bitte eine 0 ein."
 /"Cost of Childcare": 0..9999999, DK, RF
 
-HHD24u "mal pro ..."
-/"Cost of Childcare [UNIT]": Ttimeunit, DK, RF
+// HHD24u "mal pro ..." /"Cost of Childcare [UNIT]": Ttimeunit, DK, RF
 
 HHD25 "Haben Sie in den letzten zwölf Monaten anderen Personen bei der Kinderbetreuung geholfen? Wenn Sie einen Beruf ausüben, der mit Kinderbetreuung zu tun hat, denken Sie bitte nur an die Hilfe, die Sie außerhalb Ihrer beruflichen Tätigkeit geleistet haben."
 /"Helped others with childcare": Tyesno, DK, RF
@@ -3312,7 +3331,7 @@ IF hasyoungchild = yes THEN
 	  IF HHD23_[I] = 9 THEN
          HHD23i HHD23iu 
       ENDIF
-      HHD24 HHD24u
+      HHD24 {HHD24u}
    ENDIF
 ENDIF
 HHD25
@@ -3870,9 +3889,13 @@ GEN49a "Welchen höchsten allgemeinbildenden Schulabschluss hat Ihr Vater?"
 /"School leaving certificate father (Germany)"
 : Tgermed1, DK, RF
 
+GEN49a_other "Bitte nennen Sie diesen anderen Abschluss" / "Other SLC Father (Germany)": STRING
+
 GEN49b1 "Welchen höchsten beruflichen Ausbildungsabschluss hat Ihr Vater?"
 /"Vocational education father (Germany)"
 : Tgermed2, DK, RF
+
+GEN49b1_other "Bitte nennen Sie diesen anderen Abschluss" / "Other VE Father (Germany)": STRING
 
 GEN49b2 "An welcher Art Hochschule oder Einrichtung hat Ihr Vater diesen Abschluss (bzw. den höchsten dieser Abschlüsse) erreicht?"
 /"Type of academic institution father (Germany)"
@@ -3890,9 +3913,13 @@ GEN51a "Welchen höchsten allgemeinbildenden Schulabschluss hat Ihre Mutter?"
 /"School leaving certificate mother (Germany)"
 : Tgermed1, DK, RF
 
+GEN51a_other "Bitte nennen Sie diesen anderen Abschluss" / "Other SLC Mother (Germany)": STRING
+
 GEN51b1 "Welchen höchsten beruflichen Ausbildungsabschluss hat Ihre Mutter?"
 /"Vocational education mother (Germany)"
 : Tgermed2, DK, RF
+
+GEN51b1_other "Bitte nennen Sie diesen anderen Abschluss" / "Other VE Mother (Germany)": STRING
 
 GEN51b2 "An welcher Art Hochschule oder Einrichtung hat Ihre Mutter diesen Abschluss (bzw. den höchsten dieser Abschlüsse) erreicht?"
 /"Type of academic institution mother (Germany)"
@@ -4137,7 +4164,14 @@ GEN48 | OccFile.lookup.description
 IF OccFile.search(GEN48) THEN
    GEN48ISCO := OccFile.iscocode
 ENDIF
-GEN49a GEN49b1
+GEN49a 
+IF (GEN49a = 1409) THEN
+   GEN49a_other
+ENDIF
+GEN49b1
+IF (DEM49b1 = 1416) THEN
+   GEN49b1_other
+ENDIF
 IF (GEN49b1 = 1412) OR (GEN49b1 = 1413) OR (GEN49b1 = 1414) THEN
    GEN49b2
 ENDIF
@@ -4145,7 +4179,14 @@ GEN50 | OccFile.lookup.description
 IF OccFile.search(GEN50) THEN
    GEN50ISCO := OccFile.iscocode
 ENDIF
-GEN51a GEN51b1
+GEN51a 
+IF (GEN51a = 1409) THEN
+   GEN51a_other
+ENDIF
+GEN51b1
+IF (DEM51b1 = 1416) THEN
+   GEN51b1_other
+ENDIF
 IF (GEN51b1 = 1412) OR (GEN51b1 = 1413) OR (GEN51b1 = 1414) THEN
    GEN51b2
 ENDIF
@@ -4501,8 +4542,7 @@ WRK06 "In welchem Umfang sind Sie beschäftigt? Sind Sie ..."
 	pt (2) "Teilzeit",
 	mt (3) "Geringfügig beschäftigt, Mini-Job oder Ein-Euro-Job"), DONTKNOW, REFUSAL
 
-WRK07 "Wie viele Stunden arbeiten Sie normalerweise pro Woche, einschließlich Überstunden?<br/>
-<i>Bitte berücksichtigen Sie dabei alle Ihre Erwerbstätigkeiten.</i>"
+WRK07 "Wie viele Stunden arbeiten Sie normalerweise pro Woche in Ihrer Tätigkeit oder in Ihrem Unternehmen, einschließlich Überstunden?"
 /"Hours worked per week": 0..200, DONTKNOW, REFUSAL
 
 WRK08 "Wie lange brauchen Sie an einem normalen Arbeitstag von Zuhause zu Ihrem Arbeitsplatz?<br/> 
@@ -4562,7 +4602,7 @@ WRK14 "Arbeiten Sie in diesen Fällen normalerweise zu Hause oder woanders?"
 WRK15a "Ich bin zu müde von der Arbeit nach Hause gekommen, um Hausarbeiten zu erledigen, die erledigt werden mussten."
 /"Work balance: too tired to do chores": Tfreq2 , DONTKNOW, refusal
 
-WRK15b "Für mich war es schwierig aufgrund der Zeit, die ich für meinen Beruf benötigt habe, meinen Familienpflichten nachzukommen."
+WRK15b "Aufgrund der Zeit, die ich für meinen Beruf gebraucht habe, war es für mich schwierig, meinen Familienpflichten nachzukommen."
 /"Work balance: difficult to fulfil family responsibilities": Tfreq2 , DONTKNOW, REFUSAL
 
 WRK15c "Aufgrund der Hausarbeiten, die ich erledigen musste, bin ich auf der Arbeit zu müde gewesen, um produktiv zu sein."
@@ -4675,8 +4715,7 @@ WRK34 "Was ist seine oder ihre derzeitige Tätigkeit? Bitte nennen Sie die Haupt
 /"Partners Occupation (ISCO 08)": STRING, Home (-4), DONTKNOW, REFUSAL
 WRK34ISCO "Was ist seine oder ihre derzeitige Tätigkeit? Bitte nennen Sie die Haupttätigkeit." / "Partners Occupation (ISCO 08)": STRING[4], DONTKNOW, REFUSAL
 
-WRK35 "Wie viele Stunden arbeitet er oder sie normalerweise pro Woche, einschließlich Überstunden?<br/>
-<i>Bitte berücksichtigen Sie dabei alle Erwerbstätigkeiten.</i>"
+WRK35 "Wie viele Stunden arbeitet er oder sie normalerweise pro Woche in dieser Tätigkeit oder in diesem Unternehmen, einschließlich Überstunden?"
 /"Partners hours worked per week": 0..200, DONTKNOW, REFUSAL
 
 WRK36 "Noch einmal zum Thema Arbeitszeiten. Was trifft bei Ihrem Partner oder Ihrer Partnerin an einem normalen Arbeitstag am ehesten zu?"
@@ -5010,12 +5049,12 @@ INC04k "...regelmäßige Freizeitaktivitäten auszuüben?"
 INC05  "War Ihr Haushalt in den letzten 12 Monaten irgendwann in Verzug oder nicht in der Lage, die Hypothek, Miete, Rechnungen oder Raten planmäßig zu zahlen?"
 /"HH couldnt pay: Intro": Tyesno, DK, RF
 
-INC06 "Wenn man einmal alle Einkünfte zusammennimmt: Wie hoch war das Haushaltseinkommen, also das Einkommen aller Haushaltsmitglieder in einem durchschnittlichen Monat im letzten Jahr? <br />
+INC06 "Wenn man einmal alle Einkünfte zusammennimmt: Wie hoch war das Haushaltseinkommen, also das Einkommen aller Haushaltsmitglieder im letzten Monat? <br />
 <i>Bitte geben Sie den Netto-Betrag an, also den Betrag nach Abzug von Steuern und Beiträgen zur Sozialversicherung.</i> "
-/"Total Household Net Income (average monthly)":0..999999, DONTKNOW, REFUSAL
+/"Total Household Net Income (last month)":0..999999, DONTKNOW, REFUSAL
 
 INC06a "Können Sie sich einer der folgenden Einkommenskategorien zuordnen?"
-/"Total Household Net Income (average monthly) category":
+/"Total Household Net Income (last month) category":
 	(inc1 (1) "Unter 250 Euro",
 	inc2 (2) "250 bis unter 500 Euro",
 	inc3 (3) "500 bis unter 750 Euro", 
@@ -5033,7 +5072,7 @@ INC06a "Können Sie sich einer der folgenden Einkommenskategorien zuordnen?"
 
 //Income Loop
 
-INC08_ "Im Folgenden sind verschiedene Arten von Einkommen aufgelistet. Bitte geben Sie jede Art von Einkommen an, die Ihr Haushalt in den letzten 12 Monaten erhalten hat.<br />
+INC08_ "Im Folgenden sind verschiedene Arten von Einkommen aufgelistet. Bitte geben Sie jede Art von Einkommen an, die Ihr Haushalt im letzten Monat erhalten hat.<br />
  " /"Type of Income": SET OF 
 	(earnings (1) "Eigener Lohn beziehungsweise eigenes Gehalt", 
 	parearnings (2) "Lohn beziehungsweise Gehalt des Partners oder der Partnerin", 
@@ -5056,7 +5095,7 @@ INC08_ "Im Folgenden sind verschiedene Arten von Einkommen aufgelistet. Bitte ge
 	housing (19) "Wohngeld oder Lastenzuschuss",
 	other (20) "Andere Einnahmequellen"), DONTKNOW, REFUSAL, EMPTY
 
-INC09_ "Bitte geben Sie an, wie oft Ihr Haushalt folgendes Einkommen in den letzten 12 Monaten erhalten hat: <b>^{INC08_[I]}</b>"
+INC09_ "Bitte geben Sie an, wie oft Ihr Haushalt folgendes Einkommen im letzten Monat erhalten hat: <b>^{INC08_[I]}</b>"
 /"Frequency of Payment Type of Income": ARRAY[1..11] OF  1..100, DONTKNOW, REFUSAL, EMPTY
 
 // INC10_ "What was the average net amount of this payment?" / "Amount of Payment Type of Income" help "For Earnings from paid work and Retirement Pensions: If you are working with an employer, please include also earnings from any overtime you normally did. Please provide the net amount, that is, the take home pay.": ARRAY[1..11] OF  0..10000000, DONTKNOW, REFUSAL, EMPTY
