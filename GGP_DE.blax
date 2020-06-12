@@ -1453,7 +1453,7 @@ IF totalchildren > 0 THEN
             ENDIF
             LHI40_[I]
          ENDIF
-      LHI41_[I]
+         LHI41_[I]
       ENDIF         
    ENDDO
 ENDIF
@@ -3282,7 +3282,7 @@ IF HHD01a = yes THEN
    ENDDO
 ENDIF   
 IF corespartner = 1 THEN
-   HHD11 HHD11a HHD11b HHD11b2 HHD11c HHD11d HHD11e HHD11f HHD12
+   HHD11 HHD11a HHD11b HHD11b2 HHD11c HHD11d HHD11e HHD11f HHD12 HHD12a
    IF hasyoungchild = yes THEN
       HHD13 HHD13a HHD13b HHD13c
       IF childover6 = yes THEN
@@ -3342,14 +3342,21 @@ HHD28
 IF HHD28 = yes THEN
    HHD29_ HHD30 HHD30u HHD31
 ENDIF
-{HHD32
+HHD32
 IF HHD32 = yespublic OR HHD32 = yesprivate OR HHD32 = yesunknown THEN
    HHD33 HHD33u HHD34 HHD34u
-ENDIF} 
+ENDIF 
 HHD35
 IF HHD35 = yes THEN
    HHD36_
 ENDIF
+IF haschild = yes THEN 
+   HHD37
+ENDIF
+IF numbiol > 0 OR numadopt > 0 THEN
+   HHD38
+ENDIF
+HHD39 HHD40
 
 LAYOUT
 BEFORE HHDINT NEWPAGE
@@ -3540,6 +3547,7 @@ AT HHD08_[20] RESPONSEVALUE TEMPLATE NumberTextBox(Width:='55')
 BEFORE HHD11 NEWPAGE
 BEFORE HHD12 NEWPAGE
 AT HHD12 RESPONSEVALUE TEMPLATE NumberTextBox(Width:='55')
+BEFORE HHD12a NEWPAGE
 BEFORE HHD13 NEWPAGE
 BEFORE HHD14 NEWPAGE
 AT HHD14 RESPONSEVALUE TEMPLATE NumberTextBox(Width:='55')
@@ -3603,6 +3611,10 @@ AT HHD34 RESPONSEVALUE TEMPLATE Currency
 AT HHD34 DATAVALUE TEMPLATE SpecialAnswerGridAbreast
 BEFORE HHD35 NEWPAGE
 BEFORE HHD36_ NEWPAGE
+BEFORE HHD37 NEWPAGE
+BEFORE HHD38 NEWPAGE
+BEFORE HHD39 NEWPAGE
+BEFORE HHD40 NEWPAGE
 
 ENDBLOCK
 
@@ -4087,7 +4099,13 @@ IF GEN11 = yes THEN
    GEN12a
 ENDIF
 IF GEN01 = yes AND mumcores = no THEN
-   GEN15 GEN15u GEN16 GEN17 
+   GEN15 GEN15u 
+ENDIF   
+IF GEN01 = yes THEN
+	GEN16a
+ENDIF
+IF GEN01 = yes AND mumcores = no THEN
+   GEN16 GEN17 
    IF GEN03 = no THEN
       IF GEN19 = yes THEN
          GEN20
@@ -4120,8 +4138,13 @@ IF GEN25 = yes THEN
 	GEN26a
 ENDIF
 IF GEN02 = yes AND dadcores = no THEN
-   GEN29 GEN29u GEN30 GEN31
- 
+    GEN29 GEN29u
+ENDIF
+IF GEN02 = yes THEN
+	GEN30a
+ENDIF
+IF GEN02 = yes AND dadcores = no THEN
+   GEN30 GEN31
    IF GEN03 = no THEN
       IF GEN33 = yes THEN
          GEN34
@@ -4192,6 +4215,9 @@ IF (GEN51b1 = 1412) OR (GEN51b1 = 1413) OR (GEN51b1 = 1414) THEN
 ENDIF
 IF mumcores = yes OR dadcores = yes THEN
    GEN52
+   IF GEN52 = yes THEN
+	  GEN52a
+   ENDIF
 ENDIF
 IF GEN52 = no OR mumcores = yes OR dadcores = yes THEN 
    GEN53
@@ -4840,7 +4866,7 @@ IF WRK02 = 1 THEN
    IF WRK13 = yes2plus OR WRK13 = yes2minus THEN
       WRK14
    ENDIF
-   WRK15 WRK15a WRK15b WRK15c WRK15d WRK16a WRK16b
+   WRK15 WRK15a WRK15b WRK15c WRK15d WRK15e WRK16a WRK16b
    IF (BDEMOGRAPHICS.DEM06 = 2) THEN
       WRK17 WRK18 {WRK19} WRK20 WRK21
       IF WRK21 = yes THEN
@@ -4983,6 +5009,8 @@ FIELDS
 INC01 "Unter Berücksichtigung Ihrer eigenen Wohnung, weiterer Zweitwohnungen, sonstigen Immobilien- und Grundstückseigentums zusammengenommen - was denken Sie, welchen Preis würden diese zum aktuellen Marktpreis erzielen?"
 /"Value of Property (House and Land)": Twealthrange2, DONTKNOW, REFUSAL
 
+INC01b "Haben Sie für diese Immobilie bzw. Immobilien einen Kredit oder Kredite abzuzahlen?": Tyesno, DONTKNOW, REFUSAL
+
 INC02 "Wie viel muss Ihr Haushalt noch insgesamt an Grundschuld für das eben genannte Eigentum bezahlen?"
 /"Outstanding Mortgage": Twealthrange2, DONTKNOW, REFUSAL
 
@@ -5096,7 +5124,7 @@ INC08_ "Im Folgenden sind verschiedene Arten von Einkommen aufgelistet. Bitte ge
 	other (20) "Andere Einnahmequellen"), DONTKNOW, REFUSAL, EMPTY
 
 INC09_ "Bitte geben Sie an, wie oft Ihr Haushalt folgendes Einkommen im letzten Monat erhalten hat: <b>^{INC08_[I]}</b>"
-/"Frequency of Payment Type of Income": ARRAY[1..11] OF  1..100, DONTKNOW, REFUSAL, EMPTY
+/"Frequency of Payment Type of Income": ARRAY[1..20] OF  1..100, DONTKNOW, REFUSAL, EMPTY
 
 // INC10_ "What was the average net amount of this payment?" / "Amount of Payment Type of Income" help "For Earnings from paid work and Retirement Pensions: If you are working with an employer, please include also earnings from any overtime you normally did. Please provide the net amount, that is, the take home pay.": ARRAY[1..11] OF  0..10000000, DONTKNOW, REFUSAL, EMPTY
 
@@ -5119,7 +5147,10 @@ INC04 "Im Folgenden geht es darum, ob Ihr Haushalt es sich leisten kann, bestimm
 RULES
 
 INCINT INC01
-IF hasmortgage = yes THEN
+IF INC01 > 0 THEN
+   INC01b
+ENDIF
+IF INC01b = yes THEN
    INC02 INC02b INC02b2
 ENDIF
 INC03 INC13
@@ -5170,6 +5201,15 @@ BEFORE INC09_[8] NEWPAGE
 BEFORE INC09_[9] NEWPAGE
 BEFORE INC09_[10] NEWPAGE
 BEFORE INC09_[11] NEWPAGE
+BEFORE INC09_[12] NEWPAGE
+BEFORE INC09_[13] NEWPAGE
+BEFORE INC09_[14] NEWPAGE
+BEFORE INC09_[15] NEWPAGE
+BEFORE INC09_[16] NEWPAGE
+BEFORE INC09_[17] NEWPAGE
+BEFORE INC09_[18] NEWPAGE
+BEFORE INC09_[19] NEWPAGE
+BEFORE INC09_[20] NEWPAGE
 AT INC09_[1] DATAVALUE TEMPLATE SpecialAnswerGridAbreast
 AT INC09_[2] DATAVALUE TEMPLATE SpecialAnswerGridAbreast
 AT INC09_[3] DATAVALUE TEMPLATE SpecialAnswerGridAbreast
@@ -5181,6 +5221,15 @@ AT INC09_[8] DATAVALUE TEMPLATE SpecialAnswerGridAbreast
 AT INC09_[9] DATAVALUE TEMPLATE SpecialAnswerGridAbreast
 AT INC09_[10] DATAVALUE TEMPLATE SpecialAnswerGridAbreast
 AT INC09_[11] DATAVALUE TEMPLATE SpecialAnswerGridAbreast
+AT INC09_[12] DATAVALUE TEMPLATE SpecialAnswerGridAbreast
+AT INC09_[13] DATAVALUE TEMPLATE SpecialAnswerGridAbreast
+AT INC09_[14] DATAVALUE TEMPLATE SpecialAnswerGridAbreast
+AT INC09_[15] DATAVALUE TEMPLATE SpecialAnswerGridAbreast
+AT INC09_[16] DATAVALUE TEMPLATE SpecialAnswerGridAbreast
+AT INC09_[17] DATAVALUE TEMPLATE SpecialAnswerGridAbreast
+AT INC09_[18] DATAVALUE TEMPLATE SpecialAnswerGridAbreast
+AT INC09_[19] DATAVALUE TEMPLATE SpecialAnswerGridAbreast
+AT INC09_[20] DATAVALUE TEMPLATE SpecialAnswerGridAbreast
 AT INC09_[1] RESPONSEVALUE TEMPLATE NumberTextBox(Width:='55')
 AT INC09_[2] RESPONSEVALUE TEMPLATE NumberTextBox(Width:='55')
 AT INC09_[3] RESPONSEVALUE TEMPLATE NumberTextBox(Width:='55')
@@ -5192,6 +5241,15 @@ AT INC09_[8] RESPONSEVALUE TEMPLATE NumberTextBox(Width:='55')
 AT INC09_[9] RESPONSEVALUE TEMPLATE NumberTextBox(Width:='55')
 AT INC09_[10] RESPONSEVALUE TEMPLATE NumberTextBox(Width:='55')
 AT INC09_[11] RESPONSEVALUE TEMPLATE NumberTextBox(Width:='55')
+AT INC09_[12] RESPONSEVALUE TEMPLATE NumberTextBox(Width:='55')
+AT INC09_[13] RESPONSEVALUE TEMPLATE NumberTextBox(Width:='55')
+AT INC09_[14] RESPONSEVALUE TEMPLATE NumberTextBox(Width:='55')
+AT INC09_[15] RESPONSEVALUE TEMPLATE NumberTextBox(Width:='55')
+AT INC09_[16] RESPONSEVALUE TEMPLATE NumberTextBox(Width:='55')
+AT INC09_[17] RESPONSEVALUE TEMPLATE NumberTextBox(Width:='55')
+AT INC09_[18] RESPONSEVALUE TEMPLATE NumberTextBox(Width:='55')
+AT INC09_[19] RESPONSEVALUE TEMPLATE NumberTextBox(Width:='55')
+AT INC09_[20] RESPONSEVALUE TEMPLATE NumberTextBox(Width:='55')
 {AT INC10_[1] DATAVALUE TEMPLATE SpecialAnswerGridAbreast
 AT INC10_[2] DATAVALUE TEMPLATE SpecialAnswerGridAbreast
 AT INC10_[3] DATAVALUE TEMPLATE SpecialAnswerGridAbreast
@@ -5529,7 +5587,7 @@ numpartners "Zahl der Partner oder Partnerinnen (ohne derzeitigem Partner oder P
 numbiol "Zahl der leiblichen Kinder": 0..20, DK, RF
 numstep "Zahl der Stiefkinder": 0..20, DK, RF
 numadopt "Zahl der adoptierten Kinder": 0..20, DK, RF
-totalchildren "Gesamtzahl der Kinder in Verbindung mit dem derzeitigen Partner": 0..20
+totalchildren "Gesamtzahl der Kinder": 0..20
 childrenpartner_ "Gesamtzahl der Kinder in Verbindung mit früheren Partner oder Partnerin Nr.": ARRAY[1..20] OF 0..10
 
 BDEMOGRAPHICS : DEMOGRAPHICS
